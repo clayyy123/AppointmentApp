@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Calender from './Components/calender';
+import Form from './Components/calender';
+import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
@@ -11,8 +12,15 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>Clay's Appointment App</h1>
-        <Calender />
+        <h1>Well's Appointment App</h1>
+        <Switch>
+          <Route
+            path="/form"
+            render={() => {
+              return <Form />;
+            }}
+          />
+        </Switch>
       </>
     );
   }
