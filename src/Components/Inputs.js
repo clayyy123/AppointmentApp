@@ -1,6 +1,6 @@
 import React from 'react';
-const Inputs = props => {
-  const { onChangeHandler, fields, step } = props;
+const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
+  // const { onChangeHandler, fields, step } = props;
 
   const dateFormat = () => {
     let currentDate = new Date();
@@ -14,6 +14,20 @@ const Inputs = props => {
       currentDate.getDate();
     return formattedDate;
   };
+
+  const formatTime = () => {
+    return times.map(t => {
+      if (t < 12) {
+        return t + ':00 AM';
+      } else if (t === 12) {
+        return t + ':00 PM';
+      } else {
+        return t - 12 + ':00 PM';
+      }
+    });
+  };
+
+  const onHoverHandler = e => {};
 
   return (
     <>
@@ -43,6 +57,9 @@ const Inputs = props => {
             min={dateFormat()}
             onChange={onChangeHandler}
           />
+          {formatTime().map(t => {
+            return <h3 onClick={submitTime}>{t}</h3>;
+          })}
         </div>
       )}
       {step === 3 && (

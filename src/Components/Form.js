@@ -6,9 +6,13 @@ class Form extends Component {
     fields: {
       name: '',
       reason: '',
-      date: ''
+      date: '',
+      start: null,
+      end: null
     },
-    step: 1
+    step: 1,
+    click: 0,
+    times: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
   };
 
   onChangeHandler = e => {
@@ -33,6 +37,27 @@ class Form extends Component {
     submitApp(app);
   };
 
+  submitTimeHandler = e => {
+    const { click } = this.state;
+    if (click === 0) {
+      this.setState({
+        fields: {
+          ...this.state.fields,
+          start: e.target.innerText
+        },
+        click: click + 1
+      });
+    } else if (click === 1) {
+      this.setState({
+        fields: {
+          ...this.state.fields,
+          end: e.target.innerText
+        },
+        click: 0
+      });
+    }
+  };
+
   nextHandler = () => {
     this.setState({
       step: this.state.step + 1
@@ -52,15 +77,16 @@ class Form extends Component {
   };
 
   render() {
-    const { fields, step } = this.state;
+    const { fields, step, times } = this.state;
     return (
       <>
         <h1>Form</h1>
         <Inputs
           onChangeHandler={this.onChangeHandler}
+          submitTime={this.submitTimeHandler}
           fields={fields}
           step={step}
-          date={this.state.currentDate}
+          times={times}
         />
         {this.state.step === 1 && (
           <button onClick={this.nextHandler}>Next</button>
@@ -82,7 +108,7 @@ class Form extends Component {
             <button onClick={this.resetHandler}>
               Make Another Appointment
             </button>
-            <button>Check Your Appointments</button>
+            <button>Check Appointments</button>
           </>
         )}
       </>
