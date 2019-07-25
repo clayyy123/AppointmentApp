@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Form from './Components/calender';
+import Form from './Components/Form';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -9,6 +8,15 @@ class App extends Component {
     name: '',
     appointments: []
   };
+
+  submitHandler = newApp => {
+    const { appointments } = this.state;
+    this.setState({
+      appointments: [...appointments, newApp]
+    });
+    console.log(this.state);
+  };
+
   render() {
     return (
       <>
@@ -17,7 +25,7 @@ class App extends Component {
           <Route
             path="/form"
             render={() => {
-              return <Form />;
+              return <Form submitApp={this.submitHandler} />;
             }}
           />
         </Switch>
