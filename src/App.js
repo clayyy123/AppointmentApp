@@ -14,7 +14,6 @@ class App extends Component {
     this.setState({
       appointments: [...appointments, newApp]
     });
-    console.log(this.state);
   };
 
   render() {

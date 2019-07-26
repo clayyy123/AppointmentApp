@@ -15,14 +15,25 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
     return formattedDate;
   };
 
+  //users cant choose a start time before the current time
+  const filterTime = () => {
+    let currentDate = new Date();
+    let currentTime = currentDate.getHours();
+    if (fields.date === dateFormat()) {
+      return times.filter(t => t.time > currentTime);
+    } else {
+      return times;
+    }
+  };
+
   const formatTime = () => {
-    return times.map(t => {
-      if (t < 12) {
-        return t + ':00 AM';
-      } else if (t === 12) {
-        return t + ':00 PM';
+    return filterTime().map(t => {
+      if (t.time < 12) {
+        return t.time + ':00 AM';
+      } else if (t.time === 12) {
+        return t.time + ':00 PM';
       } else {
-        return t - 12 + ':00 PM';
+        return t.time - 12 + ':00 PM';
       }
     });
   };
@@ -55,10 +66,15 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
             type="date"
             name="date"
             min={dateFormat()}
+            value={fields.date}
             onChange={onChangeHandler}
           />
-          {formatTime().map(t => {
-            return <h3 onClick={submitTime}>{t}</h3>;
+          {formatTime().map((t, i) => {
+            return (
+              <h3 key={i} index={i} onClick={submitTime}>
+                {t}
+              </h3>
+            );
           })}
         </div>
       )}

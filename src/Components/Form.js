@@ -12,7 +12,19 @@ class Form extends Component {
     },
     step: 1,
     click: 0,
-    times: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    times: [
+      { time: 9, taken: false },
+      { time: 10, taken: false },
+      { time: 11, taken: false },
+      { time: 12, taken: false },
+      { time: 13, taken: false },
+      { time: 14, taken: false },
+      { time: 15, taken: false },
+      { time: 16, taken: false },
+      { time: 17, taken: false },
+      { time: 18, taken: false },
+      { time: 19, taken: false }
+    ]
   };
 
   onChangeHandler = e => {
@@ -32,18 +44,19 @@ class Form extends Component {
         name: '',
         reason: ''
       },
-      step: this.state.step < 3 && this.state.step + 1
+      step: this.state.step + 1
     });
     submitApp(app);
   };
 
   submitTimeHandler = e => {
     const { click } = this.state;
+    let index = e.target.attributes[0].value;
     if (click === 0) {
       this.setState({
         fields: {
           ...this.state.fields,
-          start: e.target.innerText
+          start: this.state.times[index].time
         },
         click: click + 1
       });
@@ -51,7 +64,7 @@ class Form extends Component {
       this.setState({
         fields: {
           ...this.state.fields,
-          end: e.target.innerText
+          end: this.state.times[index].time
         },
         click: 0
       });
