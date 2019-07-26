@@ -17,24 +17,56 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
 
   //users cant choose a start time before the current time
   const filterTime = () => {
+    debugger;
     let currentDate = new Date();
     let currentTime = currentDate.getHours();
+    let allTimes = [
+      ...times.map(t => {
+        return { ...t };
+      })
+    ];
     if (fields.date === dateFormat()) {
-      return times.filter(t => t.time > currentTime);
+      allTimes.forEach((t, i) =>
+        t.time > currentTime
+          ? (allTimes[i].taken = false)
+          : (allTimes[i].taken = true)
+      );
+      return allTimes;
     } else {
-      return times;
+      return allTimes;
     }
   };
 
+  const filterBeforeStart = () => {
+    filterTime();
+  };
+
   const formatTime = () => {
-    return filterTime().map(t => {
+    let timeArray = filterTime();
+    timeArray.forEach((t, i) => {
+      debugger;
       if (t.time < 12) {
-        return t.time + ':00 AM';
+        timeArray[i].time += ':00 AM';
       } else if (t.time === 12) {
-        return t.time + ':00 PM';
+        timeArray[i].time += ':00 PM';
       } else {
-        return t.time - 12 + ':00 PM';
+        timeArray[i].time = t.time - 12 + ':00 PM';
       }
+    });
+    return timeArray;
+  };
+
+  const displayTimes = () => {
+    return formatTime().map((t, i) => {
+      return t.taken ? (
+        <h3 key={i} index={i}>
+          {t.time} is unavailable!
+        </h3>
+      ) : (
+        <h3 key={i} index={i} onClick={submitTime}>
+          {t.time}
+        </h3>
+      );
     });
   };
 
@@ -69,13 +101,7 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
             value={fields.date}
             onChange={onChangeHandler}
           />
-          {formatTime().map((t, i) => {
-            return (
-              <h3 key={i} index={i} onClick={submitTime}>
-                {t}
-              </h3>
-            );
-          })}
+          {displayTimes()}
         </div>
       )}
       {step === 3 && (
