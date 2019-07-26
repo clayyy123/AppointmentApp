@@ -17,7 +17,6 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
 
   //users cant choose a start time before the current time
   const filterTime = () => {
-    debugger;
     let currentDate = new Date();
     let currentTime = currentDate.getHours();
     let allTimes = [
@@ -25,6 +24,14 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
         return { ...t };
       })
     ];
+    if (fields.start) {
+      allTimes.forEach((t, i) =>
+        t.time > fields.start
+          ? (allTimes[i].taken = false)
+          : (allTimes[i].taken = true)
+      );
+      return allTimes;
+    }
     if (fields.date === dateFormat()) {
       allTimes.forEach((t, i) =>
         t.time > currentTime
@@ -37,14 +44,10 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
     }
   };
 
-  const filterBeforeStart = () => {
-    filterTime();
-  };
-
+  //format time with :00 and AM/PM
   const formatTime = () => {
     let timeArray = filterTime();
     timeArray.forEach((t, i) => {
-      debugger;
       if (t.time < 12) {
         timeArray[i].time += ':00 AM';
       } else if (t.time === 12) {
@@ -56,6 +59,7 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
     return timeArray;
   };
 
+  //renders the time onto the DOM
   const displayTimes = () => {
     return formatTime().map((t, i) => {
       return t.taken ? (
