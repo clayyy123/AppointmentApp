@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 const Appointments = () => {
   return (
@@ -8,4 +9,4 @@ const Appointments = () => {
   );
 };
 
-export default Appointments;
+export default withRouter(Appointments);

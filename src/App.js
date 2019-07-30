@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from './Components/Form';
 import Appointment from './Layouts/Appointments';
+import Splash from './Layouts/Splash';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -38,6 +39,12 @@ class App extends Component {
             path="/appointments"
             render={() => {
               return <Appointment />;
+            }}
+          />
+          <Route
+            path="/"
+            render={() => {
+              return <Splash />;
             }}
           />
         </Switch>
