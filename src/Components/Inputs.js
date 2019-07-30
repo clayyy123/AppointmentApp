@@ -73,7 +73,6 @@ const Inputs = ({
       for (let j = start; j < allTimes.length; j++) {
         if (allTimes[j + 1] && allTimes[j + 1].taken) {
           allTimes[j + 1].taken = false;
-          console.log(allTimes[j + 1]);
           //grey out the times after the end time so users can book over other users
           for (let k = j + 2; k < allTimes.length; k++) {
             allTimes[k].taken = true;

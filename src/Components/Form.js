@@ -29,7 +29,6 @@ class Form extends Component {
   };
 
   onChangeHandler = e => {
-    console.log(e.target.name);
     this.setState({
       fields: {
         ...this.state.fields,
