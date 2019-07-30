@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Form from './Components/Form';
+import Appointment from './Layouts/Appointments';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -18,17 +19,29 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <h1>Well's Appointment App</h1>
+      <div className="container">
+        <h1 className="container__title">Well's Appointment App</h1>
         <Switch>
           <Route
             path="/form"
+            render={props => {
+              return (
+                <Form
+                  {...props}
+                  submitApp={this.submitHandler}
+                  appt={this.state.appointments}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/appointments"
             render={() => {
-              return <Form submitApp={this.submitHandler} />;
+              return <Appointment />;
             }}
           />
         </Switch>
-      </>
+      </div>
     );
   }
 }

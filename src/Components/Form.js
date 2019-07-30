@@ -12,6 +12,7 @@ class Form extends Component {
     },
     step: 1,
     click: 0,
+    message: '',
     times: [
       { time: 9, taken: false },
       { time: 10, taken: false },
@@ -28,7 +29,7 @@ class Form extends Component {
   };
 
   onChangeHandler = e => {
-    console.log(this.state);
+    console.log(e.target.name);
     this.setState({
       fields: {
         ...this.state.fields,
@@ -42,7 +43,8 @@ class Form extends Component {
     this.setState({
       fields: {
         name: '',
-        reason: ''
+        reason: '',
+        date: ''
       },
       step: this.state.step + 1
     });
@@ -52,29 +54,35 @@ class Form extends Component {
   submitTimeHandler = e => {
     const { click } = this.state;
     let index = e.target.attributes[0].value;
-    if (click === 0) {
+    if (!this.state.fields.start) {
       this.setState({
         fields: {
           ...this.state.fields,
           start: this.state.times[index].time
-        },
-        click: click + 1
+        }
       });
-    } else if (click === 1) {
+    } else if (this.state.fields.start) {
       this.setState({
         fields: {
           ...this.state.fields,
           end: this.state.times[index].time
-        },
-        click: 0
+        }
       });
     }
   };
 
   nextHandler = () => {
-    this.setState({
-      step: this.state.step + 1
-    });
+    const { name, reason } = this.state.fields;
+    if (!name || !reason) {
+      this.setState({
+        message: 'Fill out empty fields'
+      });
+    } else {
+      this.setState({
+        message: '',
+        step: this.state.step + 1
+      });
+    }
   };
 
   backHandler = () => {
@@ -89,8 +97,12 @@ class Form extends Component {
     });
   };
 
+  goToApptHandler = () => {
+    this.props.history.push('/appointments');
+  };
+
   render() {
-    const { fields, step, times } = this.state;
+    const { fields, step, times, message } = this.state;
     return (
       <>
         <h1>Form</h1>
@@ -100,6 +112,8 @@ class Form extends Component {
           fields={fields}
           step={step}
           times={times}
+          appt={this.props.appt}
+          message={message}
         />
         {this.state.step === 1 && (
           <button onClick={this.nextHandler}>Next</button>
@@ -121,7 +135,7 @@ class Form extends Component {
             <button onClick={this.resetHandler}>
               Make Another Appointment
             </button>
-            <button>Check Appointments</button>
+            <button onClick={this.goToApptHandler}>Check Appointments</button>
           </>
         )}
       </>

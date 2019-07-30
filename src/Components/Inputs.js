@@ -1,5 +1,5 @@
 import React from 'react';
-const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
+const Inputs = ({ onChangeHandler, fields, step, times, submitTime, appt }) => {
   // const { onChangeHandler, fields, step } = props;
 
   const dateFormat = () => {
@@ -24,24 +24,53 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime }) => {
         return { ...t };
       })
     ];
-    if (fields.start) {
-      allTimes.forEach((t, i) =>
-        t.time > fields.start
-          ? (allTimes[i].taken = false)
-          : (allTimes[i].taken = true)
-      );
-      return allTimes;
+    // filter out times from the appointment array in state
+    const datesAppt = appt.filter(a => a.date === fields.date);
+    const timeOnly = allTimes.map(t => t.time);
+    let start = null;
+    let end = null;
+    // modifies the time array according to the appointments made
+    for (let i = 0; i < datesAppt.length; i++) {
+      start = timeOnly.indexOf(datesAppt[i].start);
+      end = timeOnly.indexOf(datesAppt[i].end);
+      for (let j = start; j <= end; j++) {
+        allTimes[j].taken = true;
+      }
+    }
+    //when the user hasnt clicked a starting time
+    if (!fields.start) {
+      for (let i = 0; i < datesAppt.length; i++) {
+        start = timeOnly.indexOf(datesAppt[i].start);
+        end = timeOnly.indexOf(datesAppt[i].end);
+        for (let j = start; j <= end; j++) {
+          allTimes[j].taken = true;
+          if (allTimes[end + 1] && !allTimes[end + 1].taken) {
+            allTimes[end].taken = false;
+          }
+        }
+      }
+    } else if (fields.start) {
+      //when the user has clicked a starting time
+      start = timeOnly.indexOf(fields.start);
+      for (let k = 0; k <= start; k++) {
+        allTimes[k].taken = true;
+      }
+      for (let j = start; j < allTimes.length; j++) {
+        if (allTimes[j + 1] && allTimes[j + 1].taken) {
+          allTimes[j + 1].taken = false;
+          break;
+        }
+      }
     }
     if (fields.date === dateFormat()) {
-      allTimes.forEach((t, i) =>
-        t.time > currentTime
-          ? (allTimes[i].taken = false)
-          : (allTimes[i].taken = true)
-      );
-      return allTimes;
-    } else {
+      allTimes.forEach((t, i) => {
+        if (t.time <= currentTime) {
+          allTimes[i].taken = true;
+        }
+      });
       return allTimes;
     }
+    return allTimes;
   };
 
   //format time with :00 and AM/PM
