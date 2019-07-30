@@ -107,7 +107,7 @@ const Inputs = ({
   const displayTimes = () => {
     return formatTime().map((t, i) => {
       return t.taken ? (
-        <h3 key={i} index={i} className="FormTwo__time">
+        <h3 key={i} index={i} className="FormTwo__time FormTwo__time-inactive">
           {t.time}
         </h3>
       ) : (

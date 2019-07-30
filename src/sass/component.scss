@@ -5,11 +5,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 20rem;
+  width: 30rem;
   height: 30rem;
   border: 0.1rem solid $primary-color;
   font-family: $primary-font;
   margin: 0.3rem;
+
+  &__body {
+    font-size: 1.3rem;
+    height: 3.9rem;
+  }
 }
 
 //########################
@@ -119,10 +124,16 @@
     padding: 1rem;
     margin: 1rem;
 
-    &:hover {
-      cursor: pointer;
-      background-color: $primary-color;
-      color: white;
+    &-active {
+      &:hover {
+        cursor: pointer;
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+
+    &-inactive {
+      color: rgba(0, 0, 0, 0.486);
     }
   }
 
