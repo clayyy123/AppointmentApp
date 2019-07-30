@@ -10,15 +10,17 @@ const Form2 = ({
 }) => {
   return (
     <div className="FormTwo">
-      <input
-        className="FormTwo__date"
-        type="date"
-        name="date"
-        min={dateFormat()}
-        value={fields.date}
-        onChange={onChangeHandler}
-      />
-      <div className="FormTwo__times">{displayTimes()}</div>
+      <div className="FormTwo__top">
+        <input
+          className="FormTwo__date"
+          type="date"
+          name="date"
+          min={dateFormat()}
+          value={fields.date}
+          onChange={onChangeHandler}
+        />
+        <div className="FormTwo__times">{displayTimes()}</div>
+      </div>
       <div className="Form__buttons">
         <button className="Form__button" onClick={backHandler}>
           Back

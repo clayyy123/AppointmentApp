@@ -76,8 +76,7 @@
     padding: 0.5rem 1rem;
     font-family: Abel, sans-serif;
     transition: all 0.2s;
-    border: 0.1rem solid #6599ff;
-    margin-left: auto; }
+    border: 0.1rem solid #6599ff; }
     .Form__button:focus {
       outline: none; }
     .Form__button:hover {
@@ -86,7 +85,7 @@
   .Form__buttons {
     width: 100%;
     display: flex;
-    justify-content: center; }
+    justify-content: space-around; }
 
 .FormOne {
   display: flex;
@@ -120,12 +119,32 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-direction: column;
   width: 100%; }
+  .FormTwo__top {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5rem; }
+  .FormTwo__times {
+    flex: 0 0 50%;
+    display: flex;
+    flex-wrap: wrap; }
+  .FormTwo__time {
+    width: 8rem;
+    border: 0.1rem solid #6599ff;
+    transition: all 0.2s;
+    padding: 1rem;
+    margin: 1rem; }
+    .FormTwo__time:hover {
+      cursor: pointer;
+      background-color: #6599ff;
+      color: white; }
   .FormTwo__date {
     border: none;
     border-bottom: 1px solid #6599ff;
-    padding: 1rem 1rem 0.3rem 1rem;
-    width: 50%;
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
     font-size: 2rem;
     font-family: Abel, sans-serif; }
     .FormTwo__date:focus {
