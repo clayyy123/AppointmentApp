@@ -73,10 +73,15 @@ const Inputs = ({
       for (let j = start; j < allTimes.length; j++) {
         if (allTimes[j + 1] && allTimes[j + 1].taken) {
           allTimes[j + 1].taken = false;
+          //grey out the times after the end time so users can book over other users
+          for (let k = j + 1; k < allTimes.length; k++) {
+            allTimes[k].taken = true;
+          }
           break;
         }
       }
     }
+    //users cant choose a time earlier if the Date is today
     if (fields.date === dateFormat()) {
       allTimes.forEach((t, i) => {
         if (t.time <= currentTime) {
@@ -105,22 +110,52 @@ const Inputs = ({
 
   //renders the time onto the DOM
   const displayTimes = () => {
-    return formatTime().map((t, i) => {
-      return t.taken ? (
-        <h3 key={i} index={i} className="FormTwo__time FormTwo__time-inactive">
-          {t.time}
-        </h3>
-      ) : (
-        <h3
-          key={i}
-          index={i}
-          className="FormTwo__time FormTwo__time-active"
-          onClick={submitTime}
-        >
-          {t.time}
-        </h3>
-      );
-    });
+    let start = null;
+    let end = null;
+    let allTimes = [
+      ...times.map(t => {
+        return { ...t };
+      })
+    ];
+    const timeOnly = allTimes.map(t => t.time);
+    start = timeOnly.indexOf(fields.start);
+    end = timeOnly.indexOf(fields.end);
+    return fields.start && fields.end
+      ? formatTime().map((t, i) => {
+          return i >= start && i <= end ? (
+            <h3 key={i} index={i} className="FormTwo__time FormTwo__chosen">
+              {t.time}
+            </h3>
+          ) : (
+            <h3
+              key={i}
+              index={i}
+              className="FormTwo__time FormTwo__time-inactive"
+            >
+              {t.time}
+            </h3>
+          );
+        })
+      : formatTime().map((t, i) => {
+          return t.taken ? (
+            <h3
+              key={i}
+              index={i}
+              className="FormTwo__time FormTwo__time-inactive"
+            >
+              {t.time}
+            </h3>
+          ) : (
+            <h3
+              key={i}
+              index={i}
+              className="FormTwo__time FormTwo__time-active"
+              onClick={submitTime}
+            >
+              {t.time}
+            </h3>
+          );
+        });
   };
 
   return (
@@ -141,6 +176,7 @@ const Inputs = ({
           displayTimes={displayTimes}
           backHandler={backHandler}
           subHandler={submitHandler}
+          message={message}
         />
       )}
       {step === 3 && (

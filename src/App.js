@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
+    clicked: false,
     appointments: [
       {
         date: '2019-06-20',
@@ -39,6 +40,11 @@ class App extends Component {
     });
   };
 
+  clickHandler = () => {
+    this.setState({
+      clicked: true
+    });
+  };
   render() {
     const { appointments } = this.state;
     return (
@@ -65,7 +71,12 @@ class App extends Component {
           <Route
             path="/"
             render={() => {
-              return <Splash />;
+              return (
+                <Splash
+                  clicked={this.state.clicked}
+                  click={this.clickHandler}
+                />
+              );
             }}
           />
         </Switch>

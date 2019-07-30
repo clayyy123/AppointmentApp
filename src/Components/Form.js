@@ -34,34 +34,47 @@ class Form extends Component {
       fields: {
         ...this.state.fields,
         [e.target.name]: e.target.value
-      }
+      },
+      message: ''
     });
   };
 
   submitHandler = app => {
     const { submitApp } = this.props;
-    this.setState({
-      fields: {
-        name: '',
-        reason: '',
-        date: ''
-      },
-      step: this.state.step + 1
-    });
-    submitApp(app);
+    const { fields } = this.state;
+    if (!fields.date || !fields.start || !fields.end) {
+      this.setState({
+        message: 'Date and Times must be filled'
+      });
+    } else {
+      this.setState({
+        fields: {
+          name: '',
+          reason: '',
+          date: ''
+        },
+        step: this.state.step + 1,
+        message: ''
+      });
+      submitApp(app);
+    }
   };
 
   submitTimeHandler = e => {
-    const { click } = this.state;
+    const { fields } = this.state;
     let index = e.target.attributes[0].value;
-    if (!this.state.fields.start) {
+    if (!fields.date) {
+      this.setState({
+        message: 'Choose a date to find availability'
+      });
+    } else if (!fields.start) {
       this.setState({
         fields: {
           ...this.state.fields,
           start: this.state.times[index].time
         }
       });
-    } else if (this.state.fields.start) {
+    } else if (fields.start) {
       this.setState({
         fields: {
           ...this.state.fields,

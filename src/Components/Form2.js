@@ -6,10 +6,12 @@ const Form2 = ({
   onChangeHandler,
   displayTimes,
   backHandler,
-  subHandler
+  subHandler,
+  message
 }) => {
   return (
     <div className="FormTwo">
+      <h1 className="FormOne__error">{message}</h1>
       <div className="FormTwo__top">
         <input
           className="FormTwo__date"
