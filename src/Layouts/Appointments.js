@@ -6,9 +6,11 @@ const Appointments = ({ appt }) => {
   return (
     <div className="Appt">
       <h1 className="Appt__title">Appointments</h1>
-      {appt.map((a, i) => {
-        return <Card key={i} a={a} />;
-      })}
+      <div className="Appt__container">
+        {appt.map((a, i) => {
+          return <Card key={i} a={a} />;
+        })}
+      </div>
     </div>
   );
 };

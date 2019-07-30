@@ -12,11 +12,11 @@ const Card = ({ a }) => {
   };
   return (
     <div className="Card">
-      <h1 className="Card__name">{a.name}</h1>
+      <h1 className="Card__name">Name: {a.name}</h1>
       <h3 className="Card__time">
-        {formatTime(a.start)} - {formatTime(a.end)}
+        Time: {formatTime(a.start)} - {formatTime(a.end)}
       </h3>
-      <p className="Card__body">{a.reason}</p>
+      <p className="Card__body">Reason: {a.reason}</p>
       <h2 className="Card__date">Booked at: {a.date}</h2>
     </div>
   );

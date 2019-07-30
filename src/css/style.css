@@ -32,6 +32,31 @@
     .Splash__button:focus {
       outline: none; }
 
+.Appt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .Appt__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%; }
+  .Appt__title {
+    font-family: Abel, sans-serif;
+    font-size: 8rem; }
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 20rem;
+  height: 30rem;
+  border: 0.1rem solid #6599ff;
+  font-family: Abel, sans-serif;
+  margin: 0.3rem; }
+
 *,
 *:before,
 *:after {

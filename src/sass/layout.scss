@@ -48,3 +48,21 @@
 
 //###################################
 //#########Appointment###############
+.Appt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  &__title {
+    font-family: $primary-font;
+    font-size: 8rem;
+  }
+}

@@ -1,0 +1,13 @@
+//########################
+//#####Card###############
+.Card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 20rem;
+  height: 30rem;
+  border: 0.1rem solid $primary-color;
+  font-family: $primary-font;
+  margin: 0.3rem;
+}
