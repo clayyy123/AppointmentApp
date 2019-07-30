@@ -3,34 +3,13 @@ import './css/style.css';
 import Form from './Components/Form';
 import Appointment from './Layouts/Appointments';
 import Splash from './Layouts/Splash';
+import Navbar from './Components/Navbar';
 import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
     clicked: false,
-    appointments: [
-      {
-        date: '2019-06-20',
-        name: 'asdfasdf',
-        reason: 'asdfasdfasdafsdfasdfasdfasdfasdfadsf',
-        start: 9,
-        end: 11
-      },
-      {
-        date: '2019-06-20',
-        name: 'asdfasdf',
-        reason: 'asdfasdfasdafsdfasdfasdfasdfasdfadsf',
-        start: 15,
-        end: 17
-      },
-      {
-        date: '2019-06-20',
-        name: 'asdfasdf',
-        reason: 'asdfasdfasdafsdfasdfasdfasdfasdfadsf',
-        start: 15,
-        end: 17
-      }
-    ]
+    appointments: []
   };
 
   submitHandler = newApp => {
@@ -46,9 +25,10 @@ class App extends Component {
     });
   };
   render() {
-    const { appointments } = this.state;
+    const { appointments, clicked } = this.state;
     return (
       <div className="container">
+        {clicked && <Navbar />}
         <Switch>
           <Route
             path="/form"

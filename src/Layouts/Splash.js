@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 
 const Splash = ({ clicked, click }) => {

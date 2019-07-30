@@ -1,8 +1,3 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
 .Splash {
   width: 100%;
   height: 100vh;
@@ -73,6 +68,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+  .Form__title {
+    font-family: Abel, sans-serif; }
   .Form__button {
     border: none;
     font-size: 1.5rem;
@@ -124,6 +121,9 @@
   align-items: center;
   flex-direction: column;
   width: 100%; }
+  .FormTwo__chosen {
+    background-color: #6599ff;
+    color: white; }
   .FormTwo__top {
     width: 100%;
     display: flex;
@@ -155,6 +155,26 @@
     .FormTwo__date:focus {
       outline: none; }
 
+.FormThree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .FormThree__title {
+    font-family: Abel, sans-serif; }
+  .FormThree__buttons {
+    margin-top: 1rem; }
+
+.Navbar {
+  position: fixed; }
+  .Navbar__link {
+    text-decoration: none;
+    padding: 1rem;
+    color: #6599ff;
+    font-size: 2rem; }
+    .Navbar__link:hover {
+      border-bottom: 0.2rem solid #6599ff; }
+
 *,
 *:before,
 *:after {
@@ -167,5 +187,9 @@ html {
 
 body {
   font-size: 1rem; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */
