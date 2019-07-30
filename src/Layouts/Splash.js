@@ -7,10 +7,12 @@ const Splash = props => {
   };
   return (
     <div className="Splash">
-      <h1 className="Splash__title">Well Health</h1>
-      <button className="Splash__button" onClick={goToFormHandler}>
-        Book Now
-      </button>
+      <div className="Splash__container">
+        <h1 className="Splash__title">Well Health</h1>
+        <button className="Splash__button" onClick={goToFormHandler}>
+          Book Now
+        </button>
+      </div>
     </div>
   );
 };

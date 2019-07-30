@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/style.css';
 import Form from './Components/Form';
 import Appointment from './Layouts/Appointments';
 import Splash from './Layouts/Splash';
@@ -7,8 +7,29 @@ import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   state = {
-    name: '',
-    appointments: []
+    appointments: [
+      {
+        date: '2019-06-20',
+        name: 'asdfasdf',
+        reason: 'asdfasdfasdafsdfasdfasdfasdfasdfadsf',
+        start: 9,
+        end: 11
+      },
+      {
+        date: '2019-06-20',
+        name: 'asdfasdf',
+        reason: 'asdfasdfasdafsdfasdfasdfasdfasdfadsf',
+        start: 15,
+        end: 17
+      },
+      {
+        date: '2019-06-20',
+        name: 'asdfasdf',
+        reason: 'asdfasdfasdafsdfasdfasdfasdfasdfadsf',
+        start: 15,
+        end: 17
+      }
+    ]
   };
 
   submitHandler = newApp => {
@@ -19,9 +40,9 @@ class App extends Component {
   };
 
   render() {
+    const { appointments } = this.state;
     return (
       <div className="container">
-        <h1 className="container__title">Well's Appointment App</h1>
         <Switch>
           <Route
             path="/form"
@@ -38,7 +59,7 @@ class App extends Component {
           <Route
             path="/appointments"
             render={() => {
-              return <Appointment />;
+              return <Appointment appt={appointments} />;
             }}
           />
           <Route
