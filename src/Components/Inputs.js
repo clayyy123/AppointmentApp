@@ -1,4 +1,7 @@
 import React from 'react';
+import Form1 from './Form1';
+import Form2 from './Form2';
+import Form3 from './Form3';
 const Inputs = ({ onChangeHandler, fields, step, times, submitTime, appt }) => {
   // const { onChangeHandler, fields, step } = props;
 
@@ -103,45 +106,20 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime, appt }) => {
     });
   };
 
-  const onHoverHandler = e => {};
-
   return (
     <>
       {step === 1 && (
-        <div>
-          <label>Full Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={fields.name}
-            onChange={onChangeHandler}
-          />
-          <label>Reason For Visiting:</label>
-          <textarea
-            type="text"
-            name="reason"
-            value={fields.reason}
-            onChange={onChangeHandler}
-          />
-        </div>
+        <Form1 fields={fields} onChangeHandler={onChangeHandler} />
       )}
       {step === 2 && (
-        <div>
-          <input
-            type="date"
-            name="date"
-            min={dateFormat()}
-            value={fields.date}
-            onChange={onChangeHandler}
-          />
-          {displayTimes()}
-        </div>
+        <Form2
+          dateFormat={dateFormat}
+          fields={fields}
+          onChangeHandler={onChangeHandler}
+          displayTimes={displayTimes}
+        />
       )}
-      {step === 3 && (
-        <div>
-          <h1>Appointment has been requested!</h1>
-        </div>
-      )}
+      {step === 3 && <Form3 />}
     </>
   );
 };
