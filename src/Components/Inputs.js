@@ -2,9 +2,21 @@ import React from 'react';
 import Form1 from './Form1';
 import Form2 from './Form2';
 import Form3 from './Form3';
-const Inputs = ({ onChangeHandler, fields, step, times, submitTime, appt }) => {
-  // const { onChangeHandler, fields, step } = props;
-
+const Inputs = ({
+  onChangeHandler,
+  fields,
+  step,
+  times,
+  submitTime,
+  appt,
+  message,
+  nextHandler,
+  backHandler,
+  submitHandler,
+  resetHandler,
+  goToApptHandler
+}) => {
+  //Formats the date into "YEAR-MONTH-DAY"
   const dateFormat = () => {
     let currentDate = new Date();
     let formattedDate =
@@ -95,11 +107,16 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime, appt }) => {
   const displayTimes = () => {
     return formatTime().map((t, i) => {
       return t.taken ? (
-        <h3 key={i} index={i}>
-          {t.time} is unavailable!
+        <h3 key={i} index={i} className="FormTwo__time">
+          {t.time}
         </h3>
       ) : (
-        <h3 key={i} index={i} onClick={submitTime}>
+        <h3
+          key={i}
+          index={i}
+          className="FormTwo__time FormTwo__time-active"
+          onClick={submitTime}
+        >
           {t.time}
         </h3>
       );
@@ -109,7 +126,12 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime, appt }) => {
   return (
     <>
       {step === 1 && (
-        <Form1 fields={fields} onChangeHandler={onChangeHandler} />
+        <Form1
+          fields={fields}
+          onChangeHandler={onChangeHandler}
+          message={message}
+          nextHandler={nextHandler}
+        />
       )}
       {step === 2 && (
         <Form2
@@ -117,9 +139,13 @@ const Inputs = ({ onChangeHandler, fields, step, times, submitTime, appt }) => {
           fields={fields}
           onChangeHandler={onChangeHandler}
           displayTimes={displayTimes}
+          backHandler={backHandler}
+          subHandler={submitHandler}
         />
       )}
-      {step === 3 && <Form3 />}
+      {step === 3 && (
+        <Form3 resetHandler={resetHandler} goToApptHandler={goToApptHandler} />
+      )}
     </>
   );
 };

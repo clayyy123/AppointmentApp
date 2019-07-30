@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Form2 = ({ dateFormat, fields, onChangeHandler, displayTimes }) => {
+const Form2 = ({
+  dateFormat,
+  fields,
+  onChangeHandler,
+  displayTimes,
+  backHandler,
+  subHandler
+}) => {
   return (
     <div className="FormTwo">
       <input
@@ -11,7 +18,20 @@ const Form2 = ({ dateFormat, fields, onChangeHandler, displayTimes }) => {
         value={fields.date}
         onChange={onChangeHandler}
       />
-      {displayTimes()}
+      <div className="FormTwo__times">{displayTimes()}</div>
+      <div className="Form__buttons">
+        <button className="Form__button" onClick={backHandler}>
+          Back
+        </button>
+        <button
+          className="Form__button"
+          onClick={() => {
+            subHandler(fields);
+          }}
+        >
+          Submit
+        </button>
+      </div>
     </div>
   );
 };

@@ -104,8 +104,8 @@ class Form extends Component {
   render() {
     const { fields, step, times, message } = this.state;
     return (
-      <>
-        <h1>Form</h1>
+      <div className="Form">
+        <h1 className="Form__title">Form</h1>
         <Inputs
           onChangeHandler={this.onChangeHandler}
           submitTime={this.submitTimeHandler}
@@ -114,31 +114,13 @@ class Form extends Component {
           times={times}
           appt={this.props.appt}
           message={message}
+          nextHandler={this.nextHandler}
+          backHandler={this.backHandler}
+          submitHandler={this.submitHandler}
+          resetHandler={this.resetHandler}
+          goToApptHandler={this.goToApptHandler}
         />
-        {this.state.step === 1 && (
-          <button onClick={this.nextHandler}>Next</button>
-        )}
-        {this.state.step < 3 && this.state.step > 1 && (
-          <>
-            <button onClick={this.backHandler}>Back</button>
-            <button
-              onClick={() => {
-                this.submitHandler(this.state.fields);
-              }}
-            >
-              Submit
-            </button>
-          </>
-        )}
-        {this.state.step === 3 && (
-          <>
-            <button onClick={this.resetHandler}>
-              Make Another Appointment
-            </button>
-            <button onClick={this.goToApptHandler}>Check Appointments</button>
-          </>
-        )}
-      </>
+      </div>
     );
   }
 }

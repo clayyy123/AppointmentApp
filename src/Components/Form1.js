@@ -1,24 +1,28 @@
 import React from 'react';
 
-const Form1 = ({ fields, onChangeHandler }) => {
+const Form1 = ({ fields, onChangeHandler, message, nextHandler }) => {
   return (
     <div className="FormOne">
-      <label>Full Name:</label>
+      <h1 className="FormOne__error">{message}</h1>
       <input
         className="FormOne__input"
         type="text"
         name="name"
+        placeholder="Enter Your Full Name"
         value={fields.name}
         onChange={onChangeHandler}
       />
-      <label>Reason For Visiting:</label>
-      <textarea
-        className="FormOne__text"
+      <input
+        className="FormOne__input"
         type="text"
         name="reason"
+        placeholder="Reason for Appointment"
         value={fields.reason}
         onChange={onChangeHandler}
       />
+      <button className="Form__button" onClick={nextHandler}>
+        Next
+      </button>
     </div>
   );
 };
