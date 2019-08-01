@@ -62,12 +62,13 @@ const Inputs = ({
         end = timeOnly.indexOf(datesAppt[i].end);
         for (let j = start; j <= end; j++) {
           allTimes[j].taken = true;
-          if (
-            allTimes[end + 1] &&
-            (!allTimes[end + 1].taken || allTimes[end + 1].taken)
-          ) {
-            allTimes[end].taken = false;
-          }
+          allTimes[end].taken = false;
+          // if (
+          //   allTimes[end + 1] &&
+          //   (!allTimes[end + 1].taken || allTimes[end + 1].taken)
+          // ) {
+          //   allTimes[end].taken = false;
+          // }
         }
       }
     } else if (fields.start) {
