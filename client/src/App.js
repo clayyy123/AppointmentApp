@@ -28,7 +28,7 @@ class App extends Component {
     const { appointments, clicked } = this.state;
     return (
       <div className="container">
-        {clicked && <Navbar />}
+        <Navbar />
         <Switch>
           <Route
             path="/form"

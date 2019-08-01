@@ -117,7 +117,6 @@ class Form extends Component {
     const { fields, step, times, message } = this.state;
     return (
       <div className="Form">
-        <h1 className="Form__title">Form</h1>
         <Inputs
           onChangeHandler={this.onChangeHandler}
           submitTime={this.submitTimeHandler}
