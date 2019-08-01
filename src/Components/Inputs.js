@@ -26,7 +26,10 @@ const Inputs = ({
         ? '0' + (currentDate.getMonth() + 1)
         : currentDate.getMonth() + 1) +
       '-' +
-      currentDate.getDate();
+      (currentDate.getDate() < 10
+        ? '0' + currentDate.getDate()
+        : currentDate.getDate());
+    console.log(formattedDate);
     return formattedDate;
   };
 
@@ -59,7 +62,10 @@ const Inputs = ({
         end = timeOnly.indexOf(datesAppt[i].end);
         for (let j = start; j <= end; j++) {
           allTimes[j].taken = true;
-          if (allTimes[end + 1] && !allTimes[end + 1].taken) {
+          if (
+            allTimes[end + 1] &&
+            (!allTimes[end + 1].taken || allTimes[end + 1].taken)
+          ) {
             allTimes[end].taken = false;
           }
         }
