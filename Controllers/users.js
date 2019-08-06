@@ -7,7 +7,7 @@ module.exports = {
       const allUsers = await User.find({});
       res.json({
         users: allUsers,
-        message: success
+        success: true
       });
     } catch (err) {
       console.log(err);
@@ -37,7 +37,7 @@ module.exports = {
         // deny access
         return res.json({ success: false, message: 'Invalid credentials.' });
       }
-      const token = signToken(user);
+      const token = signToken(loggedUser);
       res.json({ success: true, message: 'Token attached.', token });
     } catch (err) {
       console.log(err);
