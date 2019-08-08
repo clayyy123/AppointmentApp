@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
+import Login from '../Components/Login';
+import SignUp from '../Components/SignUp';
 
 const Splash = ({ clicked, click }) => {
   return (
@@ -11,6 +13,8 @@ const Splash = ({ clicked, click }) => {
         </button>
         {clicked && <Redirect to="/form" />}
       </div>
+      <Login />
+      <SignUp />
     </div>
   );
 };
