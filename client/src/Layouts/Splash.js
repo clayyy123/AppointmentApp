@@ -3,7 +3,7 @@ import { withRouter, Redirect } from 'react-router-dom';
 import Login from '../Components/Login';
 import SignUp from '../Components/SignUp';
 
-const Splash = ({ clicked, click }) => {
+const Splash = ({ clicked, click, user, setUser }) => {
   return (
     <div className="Splash">
       <div className="Splash__container">
@@ -11,10 +11,10 @@ const Splash = ({ clicked, click }) => {
         <button className="Splash__button" onClick={click}>
           Book Now
         </button>
-        {clicked && <Redirect to="/form" />}
+        {(clicked || user) && <Redirect to="/form" />}
       </div>
-      <Login />
-      <SignUp />
+      <Login setUser={setUser} />
+      <SignUp setUser={setUser} />
     </div>
   );
 };

@@ -3,7 +3,6 @@ import Handle from '../HOC/HandleChange';
 
 class Login extends Component {
   render() {
-    console.log(this.props);
     const { name, email, password } = this.props.state;
     return (
       <form>

@@ -17,9 +17,11 @@ module.exports = {
   create: async (req, res) => {
     try {
       const newUser = await User.create(req.body);
+      const token = signToken(newUser);
       res.json({
         user: newUser,
-        success: true
+        success: true,
+        token
       });
     } catch (err) {
       console.log(err);

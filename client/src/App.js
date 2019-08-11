@@ -5,12 +5,23 @@ import Appointment from './Layouts/Appointments';
 import Splash from './Layouts/Splash';
 import Navbar from './Components/Navbar';
 import { Switch, Route } from 'react-router-dom';
+import httpClient from './httpClient';
 
 class App extends Component {
   state = {
     clicked: false,
+    user: null,
     appointments: []
   };
+
+  async componentDidMount() {
+    const user = await httpClient.getCurrentUser();
+    if (user) {
+      this.setState({
+        user
+      });
+    }
+  }
 
   submitHandler = newApp => {
     const { appointments } = this.state;
@@ -24,6 +35,13 @@ class App extends Component {
       clicked: true
     });
   };
+
+  setCurrentUser = user => {
+    this.setState({
+      user
+    });
+  };
+
   render() {
     const { appointments, clicked } = this.state;
     return (
@@ -53,8 +71,10 @@ class App extends Component {
             render={() => {
               return (
                 <Splash
-                  clicked={this.state.clicked}
+                  clicked={clicked}
                   click={this.clickHandler}
+                  user={this.state.user}
+                  setUser={this.setCurrentUser}
                 />
               );
             }}
