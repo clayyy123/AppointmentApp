@@ -17,9 +17,7 @@ class App extends Component {
   async componentDidMount() {
     const user = await httpClient.getCurrentUser();
     if (user) {
-      this.setState({
-        user
-      });
+      this.setCurrentUser(user);
     }
   }
 
@@ -27,6 +25,14 @@ class App extends Component {
     const { appointments } = this.state;
     this.setState({
       appointments: [...appointments, newApp]
+    });
+  };
+
+  logOutHandler = () => {
+    httpClient.logOut();
+    this.setState({
+      user: null,
+      clicked: false
     });
   };
 
@@ -46,7 +52,7 @@ class App extends Component {
     const { appointments, clicked } = this.state;
     return (
       <div className="container">
-        <Navbar />
+        <Navbar logOut={this.logOutHandler} />
         <Switch>
           <Route
             path="/form"

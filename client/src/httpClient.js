@@ -51,4 +51,10 @@ httpClient.signUp = function(userInfo) {
   );
 };
 
+httpClient.logOut = function() {
+  localStorage.removeItem('token');
+  delete this.defaults.headers.common.token;
+  return true;
+};
+
 export default httpClient;
