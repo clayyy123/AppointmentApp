@@ -10,7 +10,6 @@ dotenv.config();
 mongoose.connect(connectionString, { useNewUrlParser: true }, err => {
   console.log(err || 'connected to mongodb');
 });
-console.log(process.env.JWT_SECRET);
 
 server.use(logger('dev'));
 server.use(express.json());

@@ -27,9 +27,9 @@ httpClient.logIn = function(credentials) {
     if (token) {
       // sets token as an included header for all subsequent api requests
       this.defaults.headers.common.token = this.setToken(token);
-      return jwtDecode(token);
+      return { token: jwtDecode(token), response: serverResponse.data };
     } else {
-      return false;
+      return { response: { sucess: false } };
     }
   });
 };
@@ -55,6 +55,15 @@ httpClient.logOut = function() {
   localStorage.removeItem('token');
   delete this.defaults.headers.common.token;
   return true;
+};
+
+//###########################################
+//####CLIENT REQUEST FOR USERS###############
+
+httpClient.getUsers = function() {
+  return this({ method: 'get', url: '/users' }).then(response => {
+    return response;
+  });
 };
 
 export default httpClient;

@@ -4,6 +4,7 @@ import Form from './Components/Form';
 import Appointment from './Layouts/Appointments';
 import Splash from './Layouts/Splash';
 import Navbar from './Components/Navbar';
+import User from './Layouts/User';
 import { Switch, Route } from 'react-router-dom';
 import httpClient from './httpClient';
 
@@ -53,7 +54,9 @@ class App extends Component {
     return (
       <div className="container">
         <Navbar logOut={this.logOutHandler} />
+
         <Switch>
+          <Route path="/users" render={() => <User />} />
           <Route
             path="/form"
             render={props => {
