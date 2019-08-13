@@ -5,7 +5,8 @@ const Handle = WrappedComp => {
     state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      company: ''
     };
 
     onChangeHandler = e => {

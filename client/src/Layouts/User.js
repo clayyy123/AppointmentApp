@@ -24,7 +24,7 @@ class User extends Component {
         </div>
         <div className="User__users">
           {users.map((u, i) => {
-            <UserCard />;
+            return <UserCard key={i} user={u} />;
           })}
         </div>
       </div>

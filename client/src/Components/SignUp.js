@@ -14,7 +14,7 @@ class SignUp extends Component {
     }
   };
   render() {
-    const { name, email, password } = this.props.state;
+    const { name, email, password, company } = this.props.state;
     return (
       <form onSubmit={this.signUpHandler}>
         <input
@@ -33,6 +33,12 @@ class SignUp extends Component {
           type="password"
           name="password"
           value={password}
+          onChange={this.props.onChangeHandler}
+        />
+        <input
+          type="text"
+          name="company"
+          value={company}
           onChange={this.props.onChangeHandler}
         />
         <input type="submit" value="Sign Up" />
