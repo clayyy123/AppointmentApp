@@ -178,7 +178,7 @@
 //##########################
 //#######NavBar#############
 .Navbar {
-  position: fixed;
+  // position: fixed;
   &__link {
     text-decoration: none;
     padding: 1rem;
@@ -196,7 +196,7 @@
 //#############CARD###############
 .UserC {
   border: 0.1rem solid $primary-color;
-  margin: 5rem 0.5rem 0.5rem 0.5rem;
+  margin: 10rem 0.5rem 0.5rem 0.5rem;
   border-radius: 1rem;
 
   & > * {
@@ -251,7 +251,7 @@
   }
 
   &__name {
-    font-size: 3rem;
+    font-size: 2.6rem;
   }
 
   &__contact {

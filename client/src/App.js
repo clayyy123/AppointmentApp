@@ -12,7 +12,8 @@ class App extends Component {
   state = {
     clicked: false,
     user: null,
-    appointments: []
+    appointments: [],
+    bookedUser: null
   };
 
   async componentDidMount() {
@@ -49,14 +50,25 @@ class App extends Component {
     });
   };
 
+  setBookedUser = user => {
+    this.setState({
+      bookedUser: user
+    });
+  };
+
   render() {
-    const { appointments, clicked } = this.state;
+    const { appointments, clicked, bookedUser } = this.state;
     return (
       <div className="container">
         <Navbar logOut={this.logOutHandler} />
 
         <Switch>
-          <Route path="/users" render={() => <User />} />
+          <Route
+            path="/users"
+            render={() => (
+              <User bookUser={this.setBookedUser} bookedUser={bookedUser} />
+            )}
+          />
           <Route
             path="/form"
             render={props => {
@@ -65,6 +77,7 @@ class App extends Component {
                   {...props}
                   submitApp={this.submitHandler}
                   appt={this.state.appointments}
+                  bookedUser={bookedUser}
                 />
               );
             }}

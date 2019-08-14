@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, bookUser }) => {
   const { image, email, company, name, title } = user;
   return (
     <div className="UserC">
@@ -14,7 +14,9 @@ const UserCard = ({ user }) => {
           <p className="UserC__title">{title}</p>
           <h3 className="UserC__contact">Contact:</h3>
           <p className="UserC__email">{email}</p>
-          <button className="UserC__book-btn">Book</button>
+          <button className="UserC__book-btn" onClick={bookUser}>
+            Book
+          </button>
         </div>
       </div>
     </div>

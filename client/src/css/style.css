@@ -170,19 +170,17 @@
   .FormThree__buttons {
     margin-top: 1rem; }
 
-.Navbar {
-  position: fixed; }
-  .Navbar__link {
-    text-decoration: none;
-    padding: 1rem;
-    color: #6599ff;
-    font-size: 2rem; }
-    .Navbar__link:hover {
-      border-bottom: 0.2rem solid #6599ff; }
+.Navbar__link {
+  text-decoration: none;
+  padding: 1rem;
+  color: #6599ff;
+  font-size: 2rem; }
+  .Navbar__link:hover {
+    border-bottom: 0.2rem solid #6599ff; }
 
 .UserC {
   border: 0.1rem solid #6599ff;
-  margin: 5rem 0.5rem 0.5rem 0.5rem;
+  margin: 10rem 0.5rem 0.5rem 0.5rem;
   border-radius: 1rem; }
   .UserC > * {
     font-family: Abel, sans-serif; }
@@ -220,7 +218,7 @@
     margin-bottom: 1rem;
     font-size: 1.3rem; }
   .UserC__name {
-    font-size: 3rem; }
+    font-size: 2.6rem; }
   .UserC__contact {
     font-size: 2rem; }
   .UserC__email {
