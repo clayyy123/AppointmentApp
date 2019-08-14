@@ -44,6 +44,14 @@ class User extends Component {
       )
     });
   };
+
+  resetHandler = () => {
+    this.setState({
+      user: '',
+      filteredSearch: [],
+      filteredUsers: [...this.state.users]
+    });
+  };
   render() {
     const { user, filteredSearch, filteredUsers } = this.state;
     const { bookUser, bookedUser } = this.props;
@@ -52,6 +60,7 @@ class User extends Component {
         {bookedUser && <Redirect to="/form" />}
         <h1>Users</h1>
         <div className="User__search">
+          <button onClick={this.resetHandler}>Reset</button>
           <input
             type="text"
             name="user"
