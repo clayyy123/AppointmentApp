@@ -47,6 +47,11 @@
     font-family: Abel, sans-serif;
     font-size: 8rem; }
 
+.User__users {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+
 .Card {
   display: flex;
   flex-direction: column;
@@ -174,6 +179,67 @@
     font-size: 2rem; }
     .Navbar__link:hover {
       border-bottom: 0.2rem solid #6599ff; }
+
+.UserC {
+  border: 0.1rem solid #6599ff;
+  margin: 5rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 1rem; }
+  .UserC > * {
+    font-family: Abel, sans-serif; }
+  .UserC__wrapper {
+    max-width: 27rem;
+    min-width: 27rem;
+    min-height: 35rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%; }
+  .UserC__img-wrapper {
+    width: 48%;
+    position: relative;
+    flex: 1.5; }
+  .UserC__image {
+    width: 100%;
+    border-radius: 100rem;
+    object-fit: cover;
+    position: absolute;
+    border: 0.5rem solid #6599ff;
+    top: -5rem; }
+  .UserC__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
+    width: 100%; }
+    .UserC__info-wrapper > * {
+      margin-bottom: 0.5rem; }
+  .UserC__title {
+    margin-bottom: 1rem;
+    font-size: 1.3rem; }
+  .UserC__name {
+    font-size: 3rem; }
+  .UserC__contact {
+    font-size: 2rem; }
+  .UserC__email {
+    margin-bottom: 3rem;
+    font-size: 1.5rem; }
+  .UserC__book-btn {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.8rem 1rem;
+    font-family: Abel, sans-serif;
+    transition: all 0.2s;
+    border: 0.1rem solid #6599ff;
+    width: 30%; }
+    .UserC__book-btn:focus {
+      outline: none; }
+    .UserC__book-btn:hover {
+      color: white;
+      background-color: #6599ff;
+      cursor: pointer; }
 
 *,
 *:before,

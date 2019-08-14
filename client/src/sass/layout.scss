@@ -67,3 +67,13 @@
     font-size: 8rem;
   }
 }
+
+//#############################
+//#########USERS###############
+.User {
+  &__users {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

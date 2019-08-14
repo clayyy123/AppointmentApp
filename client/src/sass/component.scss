@@ -191,3 +191,95 @@
     }
   }
 }
+
+//################################
+//#############CARD###############
+.UserC {
+  border: 0.1rem solid $primary-color;
+  margin: 5rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 1rem;
+
+  & > * {
+    font-family: $primary-font;
+  }
+
+  &__wrapper {
+    // border: 0.1rem solid $primary-color;
+    max-width: 27rem;
+    min-width: 27rem;
+    min-height: 35rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  &__img-wrapper {
+    width: 48%;
+    position: relative;
+    flex: 1.5;
+    // top: -5rem;
+  }
+
+  &__image {
+    width: 100%;
+    border-radius: 100rem;
+    object-fit: cover;
+    position: absolute;
+    border: 0.5rem solid $primary-color;
+    top: -5rem;
+  }
+
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
+    width: 100%;
+
+    & > * {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+
+  &__name {
+    font-size: 3rem;
+  }
+
+  &__contact {
+    font-size: 2rem;
+  }
+
+  &__email {
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+  }
+
+  &__book-btn {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.8rem 1rem;
+    font-family: $primary-font;
+    transition: all 0.2s;
+    border: 0.1rem solid $primary-color;
+    width: 30%;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: white;
+      background-color: $primary-color;
+      cursor: pointer;
+    }
+  }
+}
