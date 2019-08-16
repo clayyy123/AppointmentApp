@@ -66,4 +66,10 @@ httpClient.getUsers = function() {
   });
 };
 
+httpClient.getAppointments = function(user) {
+  return this({ method: 'get', url: `/users/${user._id}` }).then(response => {
+    return response;
+  });
+};
+
 export default httpClient;

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Inputs from './Inputs';
+import { Redirect } from 'react-router-dom';
+import httpClient from '../httpClient';
 
 class Form extends Component {
   state = {
@@ -25,8 +27,11 @@ class Form extends Component {
       { time: 17, taken: false },
       { time: 18, taken: false },
       { time: 19, taken: false }
-    ]
+    ],
+    appointments: []
   };
+
+  async componentDidMount() {}
 
   onChangeHandler = e => {
     this.setState({
@@ -115,8 +120,12 @@ class Form extends Component {
 
   render() {
     const { fields, step, times, message } = this.state;
+    const { bookedUser } = this.props;
+    console.log(this.props);
     return (
       <div className="Form">
+        {!bookedUser && <Redirect to="/users" />}
+        <h1>You are booking with {bookedUser && bookedUser.name}</h1>
         <Inputs
           onChangeHandler={this.onChangeHandler}
           submitTime={this.submitTimeHandler}

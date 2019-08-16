@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const appointmentSchema = mongoose.Schema({
   createdFor: {
-    type: Schema.Type.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
   createdBy: String,
@@ -10,6 +10,7 @@ const appointmentSchema = mongoose.Schema({
   date: String
 });
 
-const Appointment = mongoose.model('Appointment', appointmentSchema);
+const Appointment = new mongoose.model('Appointment', appointmentSchema);
+// console.log(Appointment);
 
 module.exports = Appointment;

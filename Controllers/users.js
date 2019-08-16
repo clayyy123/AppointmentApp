@@ -1,4 +1,5 @@
 const User = require('../Models/User');
+const Appointment = require('../Models/Appointment');
 const signToken = require('../serverAuth.js').signToken;
 
 module.exports = {
@@ -28,7 +29,33 @@ module.exports = {
       res.json(err);
     }
   },
-  profile: async (req, res) => {},
+  getTime: async (req, res) => {
+    try {
+      const times = await Appointment.find({
+        createdFor: req.params.id
+      }).populate('createdFor');
+
+      res.json({
+        times,
+        success: true
+      });
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
+  profile: async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id);
+      res.json({
+        user,
+        success: true
+      });
+    } catch (err) {
+      console.log(err);
+      res.json(err);
+    }
+  },
   // the login route
   authenticate: async (req, res) => {
     // check if the user exists

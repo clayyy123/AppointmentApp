@@ -6,5 +6,6 @@ router.get('/', userController.index);
 router.get('/profile', userController.profile);
 router.post('/new', userController.create);
 router.post('/', userController.authenticate);
+// router.get('/:id', userController.getTimes);
 
 module.exports = router;

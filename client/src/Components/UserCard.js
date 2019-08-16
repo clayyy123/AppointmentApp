@@ -14,7 +14,7 @@ const UserCard = ({ user, bookUser }) => {
           <p className="UserC__title">{title}</p>
           <h3 className="UserC__contact">Contact:</h3>
           <p className="UserC__email">{email}</p>
-          <button className="UserC__book-btn" onClick={bookUser}>
+          <button className="UserC__book-btn" onClick={() => bookUser(user)}>
             Book
           </button>
         </div>
