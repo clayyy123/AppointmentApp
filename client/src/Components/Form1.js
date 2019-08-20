@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Form1 = ({ fields, onChangeHandler, message, nextHandler }) => {
+  console.log(fields);
   return (
     <div className="FormOne">
       <h1 className="Form__title">Give us your name and reason!</h1>
@@ -8,9 +9,9 @@ const Form1 = ({ fields, onChangeHandler, message, nextHandler }) => {
       <input
         className="FormOne__input"
         type="text"
-        name="name"
+        name="createdBy"
         placeholder="Enter Your Full Name"
-        value={fields.name}
+        value={fields.createdBy}
         onChange={onChangeHandler}
       />
       <input

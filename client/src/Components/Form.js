@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import Inputs from './Inputs';
 import { Redirect } from 'react-router-dom';
 import httpClient from '../httpClient';
+import { create } from 'domain';
 
 class Form extends Component {
   state = {
     fields: {
-      name: '',
+      createdBy: '',
       reason: '',
       date: '',
+      createdFor: null,
       start: null,
       end: null
     },
@@ -31,9 +33,8 @@ class Form extends Component {
     appointments: []
   };
 
-  async componentDidMount() {}
-
   onChangeHandler = e => {
+    console.log(e.target.name);
     this.setState({
       fields: {
         ...this.state.fields,
@@ -43,7 +44,7 @@ class Form extends Component {
     });
   };
 
-  submitHandler = app => {
+  submitHandler = async app => {
     const { submitApp } = this.props;
     const { fields } = this.state;
     if (!fields.date || !fields.start || !fields.end) {
@@ -51,6 +52,10 @@ class Form extends Component {
         message: 'Date and Times must be filled'
       });
     } else {
+      const obj = { ...fields };
+      obj.createdFor = this.props.bookedUser;
+      const createdAppt = await httpClient.createAppointment(obj);
+      console.log(createdAppt);
       this.setState({
         fields: {
           name: '',
@@ -60,7 +65,6 @@ class Form extends Component {
         step: this.state.step + 1,
         message: ''
       });
-      submitApp(app);
     }
   };
 
@@ -89,8 +93,8 @@ class Form extends Component {
   };
 
   nextHandler = () => {
-    const { name, reason } = this.state.fields;
-    if (!name || !reason) {
+    const { createdBy, reason } = this.state.fields;
+    if (!createdBy || !reason) {
       this.setState({
         message: 'Fill out empty fields'
       });
@@ -121,7 +125,7 @@ class Form extends Component {
   render() {
     const { fields, step, times, message } = this.state;
     const { bookedUser } = this.props;
-    console.log(this.props);
+    console.log(this.state.fields);
     return (
       <div className="Form">
         {!bookedUser && <Redirect to="/users" />}

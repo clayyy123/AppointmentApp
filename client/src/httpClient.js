@@ -72,4 +72,11 @@ httpClient.getAppointments = function(user) {
   });
 };
 
+httpClient.createAppointment = function(fields) {
+  return this({ method: 'post', url: '/appointemnts', data: fields }).then(
+    response => {
+      return response;
+    }
+  );
+};
 export default httpClient;
