@@ -49,8 +49,8 @@ const Inputs = ({
     let end = null;
     // modifies the time array according to the appointments made
     for (let i = 0; i < datesAppt.length; i++) {
-      start = timeOnly.indexOf(datesAppt[i].start);
-      end = timeOnly.indexOf(datesAppt[i].end);
+      start = timeOnly.indexOf(parseInt(datesAppt[i].start));
+      end = timeOnly.indexOf(parseInt(datesAppt[i].end));
       for (let j = start; j <= end; j++) {
         allTimes[j].taken = true;
       }
@@ -58,8 +58,8 @@ const Inputs = ({
     //when the user hasnt clicked a starting time
     if (!fields.start) {
       for (let i = 0; i < datesAppt.length; i++) {
-        start = timeOnly.indexOf(datesAppt[i].start);
-        end = timeOnly.indexOf(datesAppt[i].end);
+        start = timeOnly.indexOf(parseInt(datesAppt[i].start));
+        end = timeOnly.indexOf(parseInt(datesAppt[i].end));
         for (let j = start; j <= end; j++) {
           allTimes[j].taken = true;
           allTimes[end].taken = false;

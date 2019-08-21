@@ -33,6 +33,17 @@ class Form extends Component {
     appointments: []
   };
 
+  async componentDidMount() {
+    console.log('form comp mounted');
+    const demAppointments = await httpClient.getAppointments(
+      this.props.bookedUser._id
+    );
+    console.log(demAppointments);
+    this.setState({
+      appointments: demAppointments.data.times
+    });
+  }
+
   onChangeHandler = e => {
     console.log(e.target.name);
     this.setState({
@@ -61,7 +72,8 @@ class Form extends Component {
           date: ''
         },
         step: this.state.step + 1,
-        message: ''
+        message: '',
+        appointments: [...this.state.appointments, obj]
       });
     }
   };
@@ -121,7 +133,7 @@ class Form extends Component {
   };
 
   render() {
-    const { fields, step, times, message } = this.state;
+    const { fields, step, times, message, appointments } = this.state;
     const { bookedUser } = this.props;
     console.log(this.state.fields);
     return (
@@ -134,7 +146,7 @@ class Form extends Component {
           fields={fields}
           step={step}
           times={times}
-          appt={this.props.appt}
+          appt={appointments}
           message={message}
           nextHandler={this.nextHandler}
           backHandler={this.backHandler}
