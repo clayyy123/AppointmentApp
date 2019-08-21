@@ -5,6 +5,7 @@ import Appointment from './Layouts/Appointments';
 import Splash from './Layouts/Splash';
 import Navbar from './Components/Navbar';
 import User from './Layouts/User';
+import Profile from './Layouts/Profile';
 import { Switch, Route } from 'react-router-dom';
 import httpClient from './httpClient';
 
@@ -57,12 +58,16 @@ class App extends Component {
   };
 
   render() {
-    const { appointments, clicked, bookedUser } = this.state;
+    const { appointments, clicked, bookedUser, user } = this.state;
     return (
       <div className="container">
-        <Navbar logOut={this.logOutHandler} />
+        <Navbar logOut={this.logOutHandler} user={user} />
 
         <Switch>
+          <Route
+            path="/profile/:id"
+            render={props => <Profile user={user} {...props} />}
+          />
           <Route
             path="/users"
             render={() => (

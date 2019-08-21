@@ -4,6 +4,7 @@ module.exports = {
   create: async (req, res) => {
     try {
       const createdAppt = await Appt.create(req.body);
+      console.log(createdAppt);
       res.json({
         createdAppt,
         success: true

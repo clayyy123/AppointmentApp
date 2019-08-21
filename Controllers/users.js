@@ -29,11 +29,11 @@ module.exports = {
       res.json(err);
     }
   },
-  getTime: async (req, res) => {
+  getTimes: async (req, res) => {
     try {
       const times = await Appointment.find({
         createdFor: req.params.id
-      }).populate('createdFor');
+      });
 
       res.json({
         times,

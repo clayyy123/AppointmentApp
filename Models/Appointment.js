@@ -7,10 +7,11 @@ const appointmentSchema = mongoose.Schema({
   },
   createdBy: String,
   reason: String,
-  date: String
+  date: String,
+  start: String,
+  end: String
 });
 
 const Appointment = new mongoose.model('Appointment', appointmentSchema);
-// console.log(Appointment);
 
 module.exports = Appointment;

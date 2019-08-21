@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ logOut }) => {
+const Navbar = ({ logOut, user }) => {
   return (
     <div className="Navbar">
       <Link className="Navbar__link" to="/form">
@@ -13,6 +13,11 @@ const Navbar = ({ logOut }) => {
       <Link className="Navbar__link" to="/" onClick={logOut}>
         Log out
       </Link>
+      {user && (
+        <Link className="Navbar__link" to={`/profile/${user._id}`}>
+          Profile
+        </Link>
+      )}
     </div>
   );
 };

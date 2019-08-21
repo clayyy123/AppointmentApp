@@ -45,7 +45,6 @@ class Form extends Component {
   };
 
   submitHandler = async app => {
-    const { submitApp } = this.props;
     const { fields } = this.state;
     if (!fields.date || !fields.start || !fields.end) {
       this.setState({
@@ -55,10 +54,9 @@ class Form extends Component {
       const obj = { ...fields };
       obj.createdFor = this.props.bookedUser;
       const createdAppt = await httpClient.createAppointment(obj);
-      console.log(createdAppt);
       this.setState({
         fields: {
-          name: '',
+          createdBy: '',
           reason: '',
           date: ''
         },

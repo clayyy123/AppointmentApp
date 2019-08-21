@@ -66,14 +66,14 @@ httpClient.getUsers = function() {
   });
 };
 
-httpClient.getAppointments = function(user) {
-  return this({ method: 'get', url: `/users/${user._id}` }).then(response => {
+httpClient.getAppointments = function(id) {
+  return this({ method: 'get', url: `/users/${id}` }).then(response => {
     return response;
   });
 };
 
 httpClient.createAppointment = function(fields) {
-  return this({ method: 'post', url: '/appointemnts', data: fields }).then(
+  return this({ method: 'post', url: '/appointments', data: fields }).then(
     response => {
       return response;
     }

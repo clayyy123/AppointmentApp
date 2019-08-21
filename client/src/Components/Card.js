@@ -12,7 +12,7 @@ const Card = ({ a }) => {
   };
   return (
     <div className="Card">
-      <h1 className="Card__name">Name: {a.name}</h1>
+      <h1 className="Card__name">Name: {a.createdBy}</h1>
       <h3 className="Card__time">
         Time: {formatTime(a.start)} - {formatTime(a.end)}
       </h3>
