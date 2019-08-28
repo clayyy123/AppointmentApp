@@ -49,7 +49,9 @@ class Form extends Component {
     this.setState({
       fields: {
         ...this.state.fields,
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
+        start: e.target.name === 'date' ? '' : this.state.fields.start,
+        end: e.target.name === 'date' ? '' : this.state.fields.end
       },
       message: ''
     });

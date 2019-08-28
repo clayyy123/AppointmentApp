@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Navbar = ({ logOut, user }) => {
   return (
     <div className="Navbar">
-      <Link className="Navbar__link" to="/form">
+      <Link className="Navbar__link" to="/users">
         Book
       </Link>
       <Link className="Navbar__link" to="/appointments">
