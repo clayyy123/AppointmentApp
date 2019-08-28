@@ -34,6 +34,7 @@ class Form extends Component {
   };
 
   async componentDidMount() {
+    console.log('form comp mounted');
     const { bookedUser } = this.props;
     if (this.props.bookedUser) {
       const demAppointments = await httpClient.getAppointments(bookedUser._id);
@@ -146,7 +147,8 @@ class Form extends Component {
   render() {
     const { fields, step, times, message, appointments } = this.state;
     const { bookedUser } = this.props;
-    console.log(this.state.fields);
+    console.log('rendering');
+    console.log(bookedUser);
     return (
       <div className="Form">
         {!bookedUser && <Redirect to="/users" />}

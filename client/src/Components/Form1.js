@@ -5,7 +5,9 @@ const Form1 = ({ fields, onChangeHandler, message, nextHandler }) => {
   return (
     <div className="FormOne">
       <h1 className="Form__title">Give us your name and reason!</h1>
-      <h1 className="FormOne__error">{message}</h1>
+      <div className="FormOne__errorMessage">
+        <h1 className="FormOne__error">{message}</h1>
+      </div>
       <input
         className="FormOne__input"
         type="text"

@@ -119,6 +119,8 @@
     color: red;
     font-size: 1rem;
     font-family: Abel, sans-serif; }
+  .FormOne__errorMessage {
+    height: 1.5rem; }
 
 .FormTwo {
   display: flex;

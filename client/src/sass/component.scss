@@ -94,6 +94,10 @@
     font-size: 1rem;
     font-family: $primary-font;
   }
+
+  &__errorMessage {
+    height: 1.5rem;
+  }
 }
 
 //########################
