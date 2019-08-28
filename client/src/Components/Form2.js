@@ -7,7 +7,8 @@ const Form2 = ({
   displayTimes,
   backHandler,
   subHandler,
-  message
+  message,
+  resetTimes
 }) => {
   return (
     <div className="FormTwo">
@@ -27,6 +28,9 @@ const Form2 = ({
       <div className="Form__buttons">
         <button className="Form__button" onClick={backHandler}>
           Back
+        </button>
+        <button className="Form__button" onClick={resetTimes}>
+          Reset
         </button>
         <button
           className="Form__button"

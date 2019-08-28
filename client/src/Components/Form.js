@@ -34,14 +34,13 @@ class Form extends Component {
   };
 
   async componentDidMount() {
-    console.log('form comp mounted');
-    const demAppointments = await httpClient.getAppointments(
-      this.props.bookedUser._id
-    );
-    console.log(demAppointments);
-    this.setState({
-      appointments: demAppointments.data.times
-    });
+    const { bookedUser } = this.props;
+    if (this.props.bookedUser) {
+      const demAppointments = await httpClient.getAppointments(bookedUser._id);
+      this.setState({
+        appointments: demAppointments.data.times
+      });
+    }
   }
 
   onChangeHandler = e => {
@@ -134,6 +133,16 @@ class Form extends Component {
     this.props.history.push('/appointments');
   };
 
+  resetTimesHandler = () => {
+    this.setState({
+      fields: {
+        ...this.state.fields,
+        start: '',
+        end: ''
+      }
+    });
+  };
+
   render() {
     const { fields, step, times, message, appointments } = this.state;
     const { bookedUser } = this.props;
@@ -153,8 +162,9 @@ class Form extends Component {
           nextHandler={this.nextHandler}
           backHandler={this.backHandler}
           submitHandler={this.submitHandler}
-          resetHandler={this.resetHandler}
           goToApptHandler={this.goToApptHandler}
+          resetHandler={this.resetHandler}
+          resetTimesHandler={this.resetTimesHandler}
         />
       </div>
     );
