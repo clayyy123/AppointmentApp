@@ -86,6 +86,11 @@ class Form extends Component {
       } else {
         // if it doesnt because someone booked the time already, notify and push the booked appnt into array.
         this.setState({
+          fields: {
+            ...this.state.fields,
+            start: '',
+            end: ''
+          },
           message: 'Someone booked this time while you were booking!',
           appointments: [
             ...this.state.appointments,
