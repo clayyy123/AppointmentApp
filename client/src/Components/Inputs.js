@@ -30,7 +30,6 @@ const Inputs = ({
       (currentDate.getDate() < 10
         ? '0' + currentDate.getDate()
         : currentDate.getDate());
-    console.log(formattedDate);
     return formattedDate;
   };
 
@@ -45,6 +44,7 @@ const Inputs = ({
     ];
     // filter out times from the appointment array in state
     const datesAppt = appt.filter(a => a.date === fields.date);
+    console.log(datesAppt, 'dates appt');
     const timeOnly = allTimes.map(t => t.time);
     let start = null;
     let end = null;

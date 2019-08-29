@@ -39,7 +39,9 @@ class Form extends Component {
     if (this.props.bookedUser) {
       const demAppointments = await httpClient.getAppointments(bookedUser._id);
       this.setState({
-        appointments: demAppointments.data.times
+        appointments: demAppointments.data.times.sort(
+          (a, b) => a.start - b.start
+        )
       });
     }
   }
@@ -75,7 +77,9 @@ class Form extends Component {
         },
         step: this.state.step + 1,
         message: '',
-        appointments: [...this.state.appointments, obj]
+        appointments: [...this.state.appointments, obj].sort(
+          (a, b) => a.start - b.start
+        )
       });
     }
   };
