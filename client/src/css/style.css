@@ -16,6 +16,10 @@
     border-radius: 1rem;
     width: 30%;
     height: 20rem; }
+  .Splash__auth {
+    display: flex;
+    justify-content: center;
+    flex: 1; }
   .Splash__title {
     font-size: 7rem;
     font-family: Abel, sans-serif;
@@ -172,13 +176,15 @@
   .FormThree__buttons {
     margin-top: 1rem; }
 
-.Navbar__link {
-  text-decoration: none;
-  padding: 1rem;
-  color: #6599ff;
-  font-size: 2rem; }
-  .Navbar__link:hover {
-    border-bottom: 0.2rem solid #6599ff; }
+.Navbar {
+  position: fixed; }
+  .Navbar__link {
+    text-decoration: none;
+    padding: 1rem;
+    color: #6599ff;
+    font-size: 2rem; }
+    .Navbar__link:hover {
+      border-bottom: 0.2rem solid #6599ff; }
 
 .UserC {
   border: 0.1rem solid #6599ff;
@@ -240,6 +246,76 @@
       color: white;
       background-color: #6599ff;
       cursor: pointer; }
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 50%;
+  background: white; }
+  .Login__input {
+    background: none;
+    border: none;
+    border-bottom: 0.1rem solid rgba(101, 153, 255, 0.6);
+    transition: all 0.2s;
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 1.5rem;
+    font-family: Abel, sans-serif; }
+    .Login__input:focus {
+      outline: none;
+      border-bottom: 0.1rem solid #6599ff; }
+  .Login__button {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-family: Abel, sans-serif;
+    transition: all 0.2s;
+    border: 0.1rem solid #6599ff;
+    margin-bottom: 1rem; }
+    .Login__button:focus {
+      outline: none; }
+    .Login__button:hover {
+      color: white;
+      background-color: #6599ff; }
+
+.Signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 50%;
+  background: white; }
+  .Signup__input {
+    background: none;
+    border: none;
+    border-bottom: 0.1rem solid rgba(101, 153, 255, 0.6);
+    transition: all 0.2s;
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 1.5rem;
+    font-family: Abel, sans-serif; }
+    .Signup__input:focus {
+      outline: none;
+      border-bottom: 0.1rem solid #6599ff; }
+  .Signup__button {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-family: Abel, sans-serif;
+    transition: all 0.2s;
+    border: 0.1rem solid #6599ff;
+    margin-bottom: 1rem; }
+    .Signup__button:focus {
+      outline: none; }
+    .Signup__button:hover {
+      color: white;
+      background-color: #6599ff; }
 
 *,
 *:before,

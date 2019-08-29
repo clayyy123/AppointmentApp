@@ -182,7 +182,7 @@
 //##########################
 //#######NavBar#############
 .Navbar {
-  // position: fixed;
+  position: fixed;
   &__link {
     text-decoration: none;
     padding: 1rem;
@@ -284,6 +284,103 @@
       color: white;
       background-color: $primary-color;
       cursor: pointer;
+    }
+  }
+}
+
+//######################################
+//######LOGIN###########################
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 50%;
+  background: rgb(255, 255, 255);
+
+  &__input {
+    background: none;
+    border: none;
+    border-bottom: 0.1rem solid $primary-color-1;
+    transition: all 0.2s;
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 1.5rem;
+    font-family: $primary-font;
+
+    &:focus {
+      outline: none;
+      border-bottom: 0.1rem solid $primary-color;
+    }
+  }
+
+  &__button {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-family: $primary-font;
+    transition: all 0.2s;
+    border: 0.1rem solid $primary-color;
+    margin-bottom: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: white;
+      background-color: $primary-color;
+    }
+  }
+}
+
+//######################################
+//######SIGNUP###########################
+.Signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  width: 50%;
+  background: rgb(255, 255, 255);
+
+  &__input {
+    background: none;
+    border: none;
+    border-bottom: 0.1rem solid $primary-color-1;
+    transition: all 0.2s;
+    width: 100%;
+    margin-bottom: 3rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 1.5rem;
+    font-family: $primary-font;
+
+    &:focus {
+      outline: none;
+      border-bottom: 0.1rem solid $primary-color;
+    }
+  }
+
+  &__button {
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-family: $primary-font;
+    transition: all 0.2s;
+    border: 0.1rem solid $primary-color;
+    margin-bottom: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: white;
+      background-color: $primary-color;
     }
   }
 }

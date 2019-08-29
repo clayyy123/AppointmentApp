@@ -14,7 +14,8 @@ class App extends Component {
     clicked: false,
     user: null,
     appointments: [],
-    bookedUser: null
+    bookedUser: null,
+    loginToggle: false
   };
 
   async componentDidMount() {
@@ -43,11 +44,13 @@ class App extends Component {
     this.setState({
       clicked: true
     });
+    this.props.history.push('/users');
   };
 
   setCurrentUser = user => {
     this.setState({
-      user
+      user,
+      clicked: true
     });
   };
 
@@ -58,11 +61,19 @@ class App extends Component {
     this.props.history.push('/form');
   };
 
+  toggleHandler = () => {
+    this.setState({
+      loginToggle: !this.state.loginToggle
+    });
+  };
+
   render() {
     const { appointments, clicked, bookedUser, user } = this.state;
     return (
       <div className="container">
-        <Navbar logOut={this.logOutHandler} user={user} />
+        {(clicked || user) && (
+          <Navbar logOut={this.logOutHandler} user={user} />
+        )}
 
         <Switch>
           <Route
@@ -103,6 +114,8 @@ class App extends Component {
                   click={this.clickHandler}
                   user={this.state.user}
                   setUser={this.setCurrentUser}
+                  loginToggle={this.state.loginToggle}
+                  toggle={this.toggleHandler}
                 />
               );
             }}

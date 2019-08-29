@@ -7,12 +7,11 @@ const Navbar = ({ logOut, user }) => {
       <Link className="Navbar__link" to="/users">
         Book
       </Link>
-      <Link className="Navbar__link" to="/appointments">
-        Appointments
-      </Link>
-      <Link className="Navbar__link" to="/" onClick={logOut}>
-        Log out
-      </Link>
+      {user && (
+        <Link className="Navbar__link" to="/" onClick={logOut}>
+          Log out
+        </Link>
+      )}
       {user && (
         <Link className="Navbar__link" to={`/profile/${user._id}`}>
           Profile
