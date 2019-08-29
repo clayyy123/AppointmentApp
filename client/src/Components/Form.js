@@ -69,18 +69,30 @@ class Form extends Component {
       const obj = { ...fields };
       obj.createdFor = this.props.bookedUser;
       const createdAppt = await httpClient.createAppointment(obj);
-      this.setState({
-        fields: {
-          createdBy: '',
-          reason: '',
-          date: ''
-        },
-        step: this.state.step + 1,
-        message: '',
-        appointments: [...this.state.appointments, obj].sort(
-          (a, b) => a.start - b.start
-        )
-      });
+      //if creating appt is success, set state and move on
+      if (createdAppt.data.success) {
+        this.setState({
+          fields: {
+            createdBy: '',
+            reason: '',
+            date: ''
+          },
+          step: this.state.step + 1,
+          message: '',
+          appointments: [...this.state.appointments, obj].sort(
+            (a, b) => a.start - b.start
+          )
+        });
+      } else {
+        // if it doesnt because someone booked the time already, notify and push the booked appnt into array.
+        this.setState({
+          message: 'Someone booked this time while you were booking!',
+          appointments: [
+            ...this.state.appointments,
+            createdAppt.data.bookedTime
+          ].sort((a, b) => a.start - b.start)
+        });
+      }
     }
   };
 

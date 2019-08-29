@@ -57,7 +57,6 @@ class User extends Component {
     const { bookUser, bookedUser } = this.props;
     return (
       <div className="User">
-        {bookedUser && <Redirect to="/form" />}
         <h1>Users</h1>
         <div className="User__search">
           <button onClick={this.resetHandler}>Reset</button>

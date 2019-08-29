@@ -6,7 +6,7 @@ import Splash from './Layouts/Splash';
 import Navbar from './Components/Navbar';
 import User from './Layouts/User';
 import Profile from './Layouts/Profile';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import httpClient from './httpClient';
 
 class App extends Component {
@@ -55,6 +55,7 @@ class App extends Component {
     this.setState({
       bookedUser: user
     });
+    this.props.history.push('/form');
   };
 
   render() {
@@ -112,4 +113,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
