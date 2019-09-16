@@ -14,7 +14,6 @@ const Inputs = ({
   backHandler,
   submitHandler,
   resetHandler,
-  goToApptHandler,
   resetTimesHandler
 }) => {
   //Formats the date into "YEAR-MONTH-DAY"
@@ -188,9 +187,7 @@ const Inputs = ({
           resetTimes={resetTimesHandler}
         />
       )}
-      {step === 3 && (
-        <Form3 resetHandler={resetHandler} goToApptHandler={goToApptHandler} />
-      )}
+      {step === 3 && <Form3 resetHandler={resetHandler} />}
     </>
   );
 };

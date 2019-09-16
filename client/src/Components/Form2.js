@@ -12,7 +12,7 @@ const Form2 = ({
 }) => {
   return (
     <div className="FormTwo">
-      <h1 className="Form__title">Select a data and time.</h1>
+      <h1 className="Form__title">Select a date and time.</h1>
       <div class="FormOne__errorMessage">
         <h1 className="FormOne__error">{message}</h1>
       </div>

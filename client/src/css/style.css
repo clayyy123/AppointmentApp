@@ -51,10 +51,12 @@
     font-family: Abel, sans-serif;
     font-size: 8rem; }
 
-.User__users {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap; }
+.User {
+  padding: 5rem; }
+  .User__users {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; }
 
 .Card {
   display: flex;

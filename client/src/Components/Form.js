@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Inputs from './Inputs';
 import { Redirect } from 'react-router-dom';
 import httpClient from '../httpClient';
-import { create } from 'domain';
 
 class Form extends Component {
   state = {
@@ -146,13 +145,7 @@ class Form extends Component {
   };
 
   resetHandler = () => {
-    this.setState({
-      step: 1
-    });
-  };
-
-  goToApptHandler = () => {
-    this.props.history.push('/appointments');
+    this.props.history.push('/users');
   };
 
   resetTimesHandler = () => {
@@ -185,7 +178,6 @@ class Form extends Component {
           nextHandler={this.nextHandler}
           backHandler={this.backHandler}
           submitHandler={this.submitHandler}
-          goToApptHandler={this.goToApptHandler}
           resetHandler={this.resetHandler}
           resetTimesHandler={this.resetTimesHandler}
         />

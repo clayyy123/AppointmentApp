@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 class User extends Component {
   state = {
     user: '',
+    filter: 'Name',
     filteredSearch: [],
     users: [],
     filteredUsers: []
@@ -21,18 +22,27 @@ class User extends Component {
   }
 
   onChangeHandler = e => {
-    this.setState(
-      {
-        [e.target.name]: e.target.value
-      },
-      () => {
-        this.setState({
-          filteredSearch: [...this.state.users].filter(u =>
-            u.name.toLowerCase().includes(this.state.user.toLowerCase())
-          )
-        });
-      }
-    );
+    const filter = this.state.filter.toLocaleLowerCase();
+    if (e.target.name === 'filter') {
+      this.setState({
+        filter: e.target.value,
+        filteredSearch: [],
+        user: ''
+      });
+    } else {
+      this.setState(
+        {
+          [e.target.name]: e.target.value
+        },
+        () => {
+          this.setState({
+            filteredSearch: [...this.state.users].filter(u =>
+              u[filter].toLowerCase().includes(this.state.user.toLowerCase())
+            )
+          });
+        }
+      );
+    }
   };
 
   onClickFilterHandler = e => {
@@ -40,7 +50,7 @@ class User extends Component {
       user: e.target.innerText,
       filteredSearch: [],
       filteredUsers: [...this.state.users].filter(
-        u => u.name === e.target.innerText
+        u => u[this.state.filter.toLowerCase()] === e.target.innerText
       )
     });
   };
@@ -60,6 +70,14 @@ class User extends Component {
         <h1>Users</h1>
         <div className="User__search">
           <button onClick={this.resetHandler}>Reset</button>
+          <select
+            onChange={this.onChangeHandler}
+            name="filter"
+            value={this.state.filter}
+          >
+            <option>Name</option>
+            <option>Company</option>
+          </select>
           <input
             type="text"
             name="user"
@@ -70,7 +88,7 @@ class User extends Component {
             {filteredSearch.map((u, i) => {
               return (
                 <li key={i} onClick={this.onClickFilterHandler}>
-                  {u.name}
+                  {u[this.state.filter.toLowerCase()]}
                 </li>
               );
             })}

@@ -52,6 +52,7 @@ class App extends Component {
       user,
       clicked: true
     });
+    this.props.history.push('/users');
   };
 
   setBookedUser = user => {
@@ -74,7 +75,6 @@ class App extends Component {
         {(clicked || user) && (
           <Navbar logOut={this.logOutHandler} user={user} />
         )}
-
         <Switch>
           <Route
             path="/profile/:id"
