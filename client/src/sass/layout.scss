@@ -43,7 +43,7 @@
       &-active {
         flex: 0;
         transition: 0.3s all;
-        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
       }
     }
   }
@@ -55,6 +55,7 @@
     flex-direction: column;
     right: 1.5rem;
     top: 1.5rem;
+    display: none;
 
     span {
       margin-bottom: 0.5rem;
@@ -62,6 +63,10 @@
       height: 0.1rem;
       width: 2rem;
       background-color: $primary-color;
+    }
+
+    @media screen and (max-width: $phone) {
+      display: block;
     }
   }
 

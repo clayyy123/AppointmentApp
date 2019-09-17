@@ -36,20 +36,24 @@
         .Splash__auth-active {
           flex: 0;
           transition: 0.3s all;
-          transform: translateX(100%); } }
+          -webkit-transform: translateX(100%); } }
   .Splash__ham {
     position: absolute;
     z-index: 20;
     display: flex;
     flex-direction: column;
     right: 1.5rem;
-    top: 1.5rem; }
+    top: 1.5rem;
+    display: none; }
     .Splash__ham span {
       margin-bottom: 0.5rem;
       display: block;
       height: 0.1rem;
       width: 2rem;
       background-color: #6599ff; }
+    @media screen and (max-width: 600px) {
+      .Splash__ham {
+        display: block; } }
   .Splash__title {
     font-size: 10rem;
     margin-bottom: 8rem;
@@ -475,7 +479,7 @@ body {
   font-size: 1rem; }
   @media screen and (max-width: 600px) {
     body {
-      overflow: hidden; } }
+      overflow-x: hidden; } }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
