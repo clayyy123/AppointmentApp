@@ -13,15 +13,15 @@ mongoose.connect(connectionString, { useNewUrlParser: true }, err => {
   console.log(err || 'connected to mongodb');
 });
 
-server.use(express.static(`${__dirname}/client/build`));
+// server.use(express.static(`${__dirname}/client/build`));
 server.use(logger('dev'));
 server.use(express.json());
 server.use('/api/users', userRoutes);
 server.use('/api/appointments', apptRoutes);
 
-server.use('*', (req, res) => {
-  res.sendFile(`${__dirname}/client/build/index.html`);
-});
+// server.use('*', (req, res) => {
+//   res.sendFile(`${__dirname}/client/build/index.html`);
+// });
 
 server.listen(PORT, err => {
   console.log(`server listening on PORT ${PORT}`);
