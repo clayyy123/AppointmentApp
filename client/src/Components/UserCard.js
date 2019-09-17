@@ -6,7 +6,9 @@ const UserCard = ({ user, bookUser }) => {
     <div className="UserC">
       <div className="UserC__wrapper">
         <div className="UserC__img-wrapper">
-          <img src={image} alt="profile" className="UserC__image" />
+          <div>
+            <img src={image} alt="profile" className="UserC__image" />
+          </div>
         </div>
         <div className="UserC__info-wrapper">
           <h1 className="UserC__name">{name}</h1>

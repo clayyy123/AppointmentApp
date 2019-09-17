@@ -238,16 +238,25 @@
     width: 48%;
     position: relative;
     flex: 1.5;
+    display: flex;
+    justify-content: center;
     // top: -5rem;
+
+    div {
+      display: flex;
+      position: absolute;
+      top: -5rem;
+      border-radius: 100rem;
+      overflow: hidden;
+      width: 14rem;
+      height: 14rem;
+      border: 0.5rem solid #6599ff;
+    }
   }
 
   &__image {
     width: 100%;
-    border-radius: 100rem;
     object-fit: cover;
-    position: absolute;
-    border: 0.5rem solid $primary-color;
-    top: -5rem;
   }
 
   &__info-wrapper {
