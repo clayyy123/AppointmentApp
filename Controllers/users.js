@@ -11,7 +11,6 @@ module.exports = {
         success: true
       });
     } catch (err) {
-      console.log(err);
       res.json(err);
     }
   },
@@ -25,7 +24,6 @@ module.exports = {
         token
       });
     } catch (err) {
-      console.log(err);
       res.json(err);
     }
   },
@@ -40,7 +38,6 @@ module.exports = {
         success: true
       });
     } catch (err) {
-      console.log(err);
       res.json(err);
     }
   },
@@ -52,7 +49,6 @@ module.exports = {
         success: true
       });
     } catch (err) {
-      console.log(err);
       res.json(err);
     }
   },
@@ -69,7 +65,6 @@ module.exports = {
       const token = signToken(loggedUser);
       res.json({ success: true, message: 'Token attached.', token });
     } catch (err) {
-      console.log(err);
       res.json(err);
     }
   }
