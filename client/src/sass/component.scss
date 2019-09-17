@@ -351,6 +351,8 @@
     transition: all 0.2s;
     border: 0.1rem solid $primary-color;
     margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 0;
 
     &:focus {
       outline: none;
@@ -411,6 +413,8 @@
     transition: all 0.2s;
     border: 0.1rem solid $primary-color;
     margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 0;
 
     &:focus {
       outline: none;
