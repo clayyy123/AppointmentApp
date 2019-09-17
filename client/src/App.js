@@ -69,7 +69,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props.location);
     const { appointments, clicked, bookedUser, user } = this.state;
     const { pathname } = this.props.location;
     return (

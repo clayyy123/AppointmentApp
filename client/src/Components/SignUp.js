@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Handle from '../HOC/HandleChange';
 import httpClient from '../httpClient.js';
-import { Redirect } from 'react-router-dom';
 
 class SignUp extends Component {
   signUpHandler = async e => {

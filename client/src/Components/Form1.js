@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Form1 = ({ fields, onChangeHandler, message, nextHandler }) => {
-  console.log(fields);
   return (
     <div className="FormOne">
       <h1 className="Form__title">Give us your name and reason!</h1>

@@ -33,7 +33,6 @@ class Form extends Component {
   };
 
   async componentDidMount() {
-    console.log('form comp mounted');
     const { bookedUser } = this.props;
     if (this.props.bookedUser) {
       const demAppointments = await httpClient.getAppointments(bookedUser._id);
@@ -46,7 +45,6 @@ class Form extends Component {
   }
 
   onChangeHandler = e => {
-    console.log(e.target.name);
     this.setState({
       fields: {
         ...this.state.fields,
@@ -161,12 +159,14 @@ class Form extends Component {
   render() {
     const { fields, step, times, message, appointments } = this.state;
     const { bookedUser } = this.props;
-    console.log('rendering');
-    console.log(bookedUser);
     return (
       <div className="Form">
         {!bookedUser && <Redirect to="/users" />}
-        <h1>You are booking with {bookedUser && bookedUser.name}</h1>
+
+        <h1>
+          {step === 3 ? 'Thanks for booking with' : 'You are booking with'}{' '}
+          {bookedUser && bookedUser.name}
+        </h1>
         <Inputs
           onChangeHandler={this.onChangeHandler}
           submitTime={this.submitTimeHandler}

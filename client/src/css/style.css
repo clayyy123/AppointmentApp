@@ -109,8 +109,10 @@
         border: 0.1rem solid rgba(101, 153, 255, 0.6); }
     .User__filtered ul {
       position: absolute;
+      z-index: 10;
       width: 100%;
       list-style: none;
+      background-color: white;
       -webkit-box-shadow: 0px 1px 1px 0px #4d4e53;
       -moz-box-shadow: 0px 1px 1px 0px #4d4e53;
       box-shadow: 0px 1px 1px 0px #4d4e53; }

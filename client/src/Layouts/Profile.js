@@ -9,9 +9,7 @@ class Profile extends Component {
 
   async componentDidMount() {
     const { match } = this.props;
-    console.log(this.props);
     const demAppointments = await httpClient.getAppointments(match.params.id);
-    console.log(demAppointments);
     this.setState({
       appointments: demAppointments.data.times
     });

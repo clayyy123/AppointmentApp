@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import UserCard from '../Components/UserCard';
 import httpClient from '../httpClient';
-import { Redirect } from 'react-router-dom';
 
 class User extends Component {
   state = {
@@ -15,7 +14,6 @@ class User extends Component {
 
   async componentDidMount() {
     const response = await httpClient.getUsers();
-    console.log(response);
     this.setState({
       users: response.data.users,
       filteredUsers: response.data.users
@@ -90,14 +88,14 @@ class User extends Component {
 
   render() {
     const { user, filteredSearch, filteredUsers, toggle, filter } = this.state;
-    const { bookUser, bookedUser } = this.props;
+    const { bookUser } = this.props;
     return (
       <div className="User">
         <h1 className="User__title">Users</h1>
         <div className="User__search">
           <div className="User__select">
             <div className="User__value" onClick={this.selectHandler}>
-              {filter} <i class="fas fa-caret-down"></i>
+              {filter} <i className="fas fa-caret-down"></i>
             </div>
             {toggle && (
               <ul className="User__options">
