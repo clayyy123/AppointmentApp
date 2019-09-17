@@ -68,7 +68,8 @@
     font-size: 1.5rem;
     padding: 1rem 0.5rem;
     font-family: Abel, sans-serif;
-    transition: all 0.2s; }
+    transition: all 0.2s;
+    background-color: white; }
     .Splash__button:hover {
       background-color: #6599ff;
       color: white; }
@@ -474,6 +475,9 @@
 
 html {
   font-size: 62.5%; }
+  @media screen and (max-width: 600px) {
+    html {
+      overflow-x: hidden; } }
 
 body {
   font-size: 1rem; }
