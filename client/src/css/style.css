@@ -3,7 +3,8 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  overflow: hidden; }
   .Splash__container {
     flex: 0 0 60%;
     display: flex;
@@ -15,15 +16,48 @@
     background-position: left;
     background-size: cover;
     height: 100%; }
+    @media screen and (max-width: 600px) {
+      .Splash__container {
+        width: 100%;
+        flex: 0 0 100%;
+        overflow: hidden; } }
   .Splash__auth {
     display: flex;
     justify-content: center;
     flex: 1; }
+    @media screen and (max-width: 600px) {
+      .Splash__auth {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 80%;
+        background-color: rgba(255, 255, 255, 0.712);
+        transition: 0.3s all; }
+        .Splash__auth-active {
+          flex: 0;
+          transition: 0.3s all;
+          transform: translateX(100%); } }
+  .Splash__ham {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    right: 1.5rem;
+    top: 1.5rem; }
+    .Splash__ham span {
+      margin-bottom: 0.5rem;
+      display: block;
+      height: 0.1rem;
+      width: 2rem;
+      background-color: #6599ff; }
   .Splash__title {
     font-size: 10rem;
     margin-bottom: 8rem;
     font-family: "Handlee", cursive;
     color: #6599ff; }
+    @media screen and (max-width: 750px) {
+      .Splash__title {
+        font-size: 8rem; } }
   .Splash__button {
     width: 20%;
     border: none;
@@ -347,6 +381,15 @@
   padding: 3rem;
   width: 65%;
   background: white; }
+  @media screen and (max-width: 1000px) {
+    .Login {
+      width: 80%; } }
+  @media screen and (max-width: 750px) {
+    .Login {
+      width: 100%; } }
+  @media screen and (max-width: 600px) {
+    .Login {
+      background-color: rgba(255, 255, 255, 0.712); } }
   .Login__input {
     background: none;
     border: none;
@@ -382,6 +425,15 @@
   padding: 3rem;
   width: 65%;
   background: white; }
+  @media screen and (max-width: 1000px) {
+    .Signup {
+      width: 80%; } }
+  @media screen and (max-width: 750px) {
+    .Signup {
+      width: 100%; } }
+  @media screen and (max-width: 600px) {
+    .Signup {
+      background-color: rgba(255, 255, 255, 0.712); } }
   .Signup__input {
     background: none;
     border: none;
@@ -421,6 +473,9 @@ html {
 
 body {
   font-size: 1rem; }
+  @media screen and (max-width: 600px) {
+    body {
+      overflow: hidden; } }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

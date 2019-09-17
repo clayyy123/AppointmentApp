@@ -12,6 +12,10 @@ html {
 
 body {
   font-size: 1rem;
+
+  @media screen and (max-width: $phone) {
+    overflow: hidden;
+  }
 }
 
 input::-webkit-outer-spin-button,

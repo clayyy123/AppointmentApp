@@ -15,7 +15,8 @@ class App extends Component {
     user: null,
     appointments: [],
     bookedUser: null,
-    loginToggle: false
+    loginToggle: false,
+    ham: true
   };
 
   async componentDidMount() {
@@ -68,8 +69,14 @@ class App extends Component {
     });
   };
 
+  hamHandler = () => {
+    this.setState({
+      ham: !this.state.ham
+    });
+  };
+
   render() {
-    const { appointments, clicked, bookedUser, user } = this.state;
+    const { appointments, clicked, bookedUser, user, ham } = this.state;
     const { pathname } = this.props.location;
     return (
       <div className="container">
@@ -115,6 +122,8 @@ class App extends Component {
                   setUser={this.setCurrentUser}
                   loginToggle={this.state.loginToggle}
                   toggle={this.toggleHandler}
+                  ham={ham}
+                  hamHandler={this.hamHandler}
                 />
               );
             }}

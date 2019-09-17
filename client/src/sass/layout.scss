@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   &__container {
     flex: 0 0 60%;
@@ -18,12 +19,50 @@
     background-position: left;
     background-size: cover;
     height: 100%;
+
+    @media screen and (max-width: $phone) {
+      width: 100%;
+      flex: 0 0 100%;
+      overflow: hidden;
+    }
   }
 
   &__auth {
     display: flex;
     justify-content: center;
     flex: 1;
+
+    @media screen and (max-width: $phone) {
+      position: absolute;
+      right: 0;
+      height: 100%;
+      width: 80%;
+      background-color: rgba(255, 255, 255, 0.712);
+      transition: 0.3s all;
+
+      &-active {
+        flex: 0;
+        transition: 0.3s all;
+        transform: translateX(100%);
+      }
+    }
+  }
+
+  &__ham {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    right: 1.5rem;
+    top: 1.5rem;
+
+    span {
+      margin-bottom: 0.5rem;
+      display: block;
+      height: 0.1rem;
+      width: 2rem;
+      background-color: $primary-color;
+    }
   }
 
   &__title {
@@ -31,6 +70,10 @@
     margin-bottom: 8rem;
     font-family: $logo-font;
     color: $primary-color;
+
+    @media screen and (max-width: $mini) {
+      font-size: 8rem;
+    }
   }
 
   &__button {

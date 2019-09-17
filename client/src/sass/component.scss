@@ -314,6 +314,18 @@
   width: 65%;
   background: rgb(255, 255, 255);
 
+  @media screen and (max-width: $tablet) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: $mini) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: $phone) {
+    background-color: rgba(255, 255, 255, 0.712);
+  }
+
   &__input {
     background: none;
     border: none;
@@ -361,6 +373,18 @@
   padding: 3rem;
   width: 65%;
   background: rgb(255, 255, 255);
+
+  @media screen and (max-width: $tablet) {
+    width: 80%;
+  }
+
+  @media screen and (max-width: $mini) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: $phone) {
+    background-color: rgba(255, 255, 255, 0.712);
+  }
 
   &__input {
     background: none;
