@@ -69,12 +69,12 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.props.location);
     const { appointments, clicked, bookedUser, user } = this.state;
+    const { pathname } = this.props.location;
     return (
       <div className="container">
-        {(clicked || user) && (
-          <Navbar logOut={this.logOutHandler} user={user} />
-        )}
+        {pathname !== '/' && <Navbar logOut={this.logOutHandler} user={user} />}
         <Switch>
           <Route
             path="/profile/:id"

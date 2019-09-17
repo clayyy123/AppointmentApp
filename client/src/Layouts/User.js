@@ -9,7 +9,8 @@ class User extends Component {
     filter: 'Name',
     filteredSearch: [],
     users: [],
-    filteredUsers: []
+    filteredUsers: [],
+    toggle: false
   };
 
   async componentDidMount() {
@@ -22,27 +23,50 @@ class User extends Component {
   }
 
   onChangeHandler = e => {
-    const filter = this.state.filter.toLocaleLowerCase();
-    if (e.target.name === 'filter') {
-      this.setState({
-        filter: e.target.value,
-        filteredSearch: [],
-        user: ''
-      });
-    } else {
-      this.setState(
-        {
-          [e.target.name]: e.target.value
-        },
-        () => {
-          this.setState({
-            filteredSearch: [...this.state.users].filter(u =>
-              u[filter].toLowerCase().includes(this.state.user.toLowerCase())
-            )
-          });
-        }
-      );
-    }
+    const { filter } = this.state;
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      () => {
+        this.setState({
+          filteredSearch: [...this.state.users].filter(
+            u =>
+              u[filter.toLowerCase()]
+                .toLowerCase()
+                .includes(this.state.user.toLowerCase()) && this.state.user
+          )
+        });
+      }
+    );
+  };
+
+  selectHandler = () => {
+    this.setState({
+      toggle: !this.state.toggle
+    });
+  };
+
+  optionHandler = e => {
+    const { filter } = this.state;
+    this.setState(
+      {
+        filter: e.target.innerText,
+        toggle: false,
+        user: '',
+        filteredSearch: []
+      },
+      () => {
+        this.setState({
+          filteredSearch: [...this.state.users].filter(
+            u =>
+              u[filter.toLowerCase()]
+                .toLowerCase()
+                .includes(this.state.user.toLowerCase()) && this.state.user
+          )
+        });
+      }
+    );
   };
 
   onClickFilterHandler = e => {
@@ -59,40 +83,48 @@ class User extends Component {
     this.setState({
       user: '',
       filteredSearch: [],
-      filteredUsers: [...this.state.users]
+      filteredUsers: [...this.state.users],
+      toggle: false
     });
   };
+
   render() {
-    const { user, filteredSearch, filteredUsers } = this.state;
+    const { user, filteredSearch, filteredUsers, toggle, filter } = this.state;
     const { bookUser, bookedUser } = this.props;
     return (
       <div className="User">
-        <h1>Users</h1>
+        <h1 className="User__title">Users</h1>
         <div className="User__search">
+          <div className="User__select">
+            <div className="User__value" onClick={this.selectHandler}>
+              {filter} <i class="fas fa-caret-down"></i>
+            </div>
+            {toggle && (
+              <ul className="User__options">
+                <li onClick={this.optionHandler}>Name</li>
+                <li onClick={this.optionHandler}>Company</li>
+              </ul>
+            )}
+          </div>
+          <div className="User__filtered">
+            <input
+              type="text"
+              name="user"
+              value={user}
+              placeholder="Name"
+              onChange={this.onChangeHandler}
+            />
+            <ul>
+              {filteredSearch.map((u, i) => {
+                return (
+                  <li key={i} onClick={this.onClickFilterHandler}>
+                    {u[this.state.filter.toLowerCase()]}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
           <button onClick={this.resetHandler}>Reset</button>
-          <select
-            onChange={this.onChangeHandler}
-            name="filter"
-            value={this.state.filter}
-          >
-            <option>Name</option>
-            <option>Company</option>
-          </select>
-          <input
-            type="text"
-            name="user"
-            value={user}
-            onChange={this.onChangeHandler}
-          />
-          <ul>
-            {filteredSearch.map((u, i) => {
-              return (
-                <li key={i} onClick={this.onClickFilterHandler}>
-                  {u[this.state.filter.toLowerCase()]}
-                </li>
-              );
-            })}
-          </ul>
         </div>
         <div className="User__users">
           {filteredUsers.map((u, i) => {

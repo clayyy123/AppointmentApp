@@ -183,16 +183,30 @@
 //#######NavBar#############
 .Navbar {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  font-family: $primary-font;
+
   &__link {
     text-decoration: none;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     color: $primary-color;
     font-size: 2rem;
-    // margin: 1rem;
 
     &:hover {
-      border-bottom: 0.2rem solid $primary-color;
+      color: $primary-color-1;
     }
+  }
+
+  &__logo {
+    font-family: $logo-font;
+    text-decoration: none;
+    font-size: 2.5rem;
+    color: $primary-color;
+    margin-right: auto;
+    margin-left: 2rem;
   }
 }
 

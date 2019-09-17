@@ -19,8 +19,8 @@ class Profile extends Component {
   render() {
     const { appointments } = this.state;
     return (
-      <div>
-        <h1>Your Appointments</h1>
+      <div className="Appt">
+        <h1 className="Appt__title">Your Appointments</h1>
         <div className="Appt__container">
           {appointments.map((a, i) => {
             return <Card key={i} a={a} />;
