@@ -8,6 +8,7 @@ class SignUp extends Component {
     e.preventDefault();
     const { state } = this.props;
     const createdUser = await httpClient.signUp(state);
+    console.log(createdUser);
     if (createdUser.response.success) {
       setUser(createdUser.token);
     }
