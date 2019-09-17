@@ -20,7 +20,7 @@ httpClient.getCurrentUser = function() {
 httpClient.logIn = function(credentials) {
   return this({
     method: 'post',
-    url: '/users',
+    url: '/api/users',
     data: credentials
   }).then(serverResponse => {
     const token = serverResponse.data.token;
@@ -36,7 +36,7 @@ httpClient.logIn = function(credentials) {
 
 // logIn and signUp functions could be combined into one since the only difference is the url we're sending a request to..
 httpClient.signUp = function(userInfo) {
-  return this({ method: 'post', url: '/users/new', data: userInfo }).then(
+  return this({ method: 'post', url: '/api/users/new', data: userInfo }).then(
     serverResponse => {
       const token = serverResponse.data.token;
       if (token) {
@@ -60,19 +60,19 @@ httpClient.logOut = function() {
 //####CLIENT REQUEST FOR USERS###############
 
 httpClient.getUsers = function() {
-  return this({ method: 'get', url: '/users' }).then(response => {
+  return this({ method: 'get', url: '/api/users' }).then(response => {
     return response;
   });
 };
 
 httpClient.getAppointments = function(id) {
-  return this({ method: 'get', url: `/users/${id}` }).then(response => {
+  return this({ method: 'get', url: `/api/users/${id}` }).then(response => {
     return response;
   });
 };
 
 httpClient.createAppointment = function(fields) {
-  return this({ method: 'post', url: '/appointments', data: fields }).then(
+  return this({ method: 'post', url: '/api/appointments', data: fields }).then(
     response => {
       return response;
     }
