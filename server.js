@@ -2,11 +2,11 @@ const express = require('express');
 const server = express();
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const PORT = 3001;
 const userRoutes = require('./Routes/users');
 const apptRoutes = require('./Routes/appointments');
 const dotenv = require('dotenv');
 dotenv.config();
+const PORT = process.env.PORT || 3001;
 const connectionString = process.env.MONGODB_URI || 'mongodb://localhost/appts';
 mongoose.connect(connectionString, { useNewUrlParser: true }, err => {
   console.log(err || 'connected to mongodb');
