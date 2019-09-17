@@ -28,6 +28,7 @@
     height: 100%; }
     @media screen and (max-width: 600px) {
       .Splash__auth {
+        top: 0;
         position: fixed;
         right: 0;
         height: 100%;
@@ -35,7 +36,6 @@
         background-color: white;
         transition: 0.3s all; }
         .Splash__auth-active {
-          flex: 0;
           transition: 0.3s all;
           transform: translateX(100%); } }
   .Splash__ham {

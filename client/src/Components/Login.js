@@ -35,7 +35,7 @@ class Login extends Component {
           onChange={this.props.onChangeHandler}
           className="Login__input"
         />
-        <input type="submit" value="Login" className="Login__button" />
+        <button className="Login__button">Log In</button>
         <h4 onClick={this.props.toggle} style={{ cursor: 'pointer' }}>
           Need an account?
         </h4>

@@ -49,7 +49,7 @@ class SignUp extends Component {
           onChange={this.props.onChangeHandler}
           className="Signup__input"
         />
-        <input type="submit" value="Sign Up" className="Signup__button" />
+        <button className="Signup__button">Sign Up</button>
         <h4 onClick={this.props.toggle} style={{ cursor: 'pointer' }}>
           Have an account?
         </h4>
