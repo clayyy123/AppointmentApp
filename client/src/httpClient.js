@@ -38,6 +38,7 @@ httpClient.logIn = function(credentials) {
 httpClient.signUp = function(userInfo) {
   return this({ method: 'post', url: '/api/users/new', data: userInfo }).then(
     serverResponse => {
+      console.log(serverResponse);
       const token = serverResponse.data.token;
       if (token) {
         // sets token as an included header for all subsequent api requests
