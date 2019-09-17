@@ -16,10 +16,9 @@ module.exports = {
   },
   create: async (req, res) => {
     try {
-      console.log('creating');
       const newUser = await User.create(req.body);
       const token = signToken(newUser);
-      console.log(token);
+
       res.json({
         user: newUser,
         success: true,
