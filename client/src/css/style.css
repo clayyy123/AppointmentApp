@@ -24,10 +24,11 @@
   .Splash__auth {
     display: flex;
     justify-content: center;
-    flex: 1; }
+    flex: 1;
+    height: 100%; }
     @media screen and (max-width: 600px) {
       .Splash__auth {
-        position: absolute;
+        position: fixed;
         right: 0;
         height: 100%;
         width: 80%;
@@ -36,7 +37,7 @@
         .Splash__auth-active {
           flex: 0;
           transition: 0.3s all;
-          -webkit-transform: translateX(100%); } }
+          transform: translateX(100%); } }
   .Splash__ham {
     position: absolute;
     z-index: 20;
