@@ -302,7 +302,9 @@
   align-items: center;
   justify-content: flex-end;
   width: 100%;
-  font-family: Abel, sans-serif; }
+  font-family: Abel, sans-serif;
+  background-color: white;
+  z-index: 30; }
   .Navbar__link {
     text-decoration: none;
     padding: 1rem 1.5rem;

@@ -188,6 +188,8 @@
   justify-content: flex-end;
   width: 100%;
   font-family: $primary-font;
+  background-color: white;
+  z-index: 30;
 
   &__link {
     text-decoration: none;
